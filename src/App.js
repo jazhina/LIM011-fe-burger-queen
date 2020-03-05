@@ -1,13 +1,13 @@
 import React from 'react';
-// import firebase from '../src/conexion/firebase.js'
-import Titulo from './componentes/titulo';
-import Menu from './componentes/menu';
+// import logo from './logo.svg';
+import Titulo from './components/title';
+import CallMenu from './components/menu';
 
 function App() {
   return (
     <div>
       <Titulo />
-      <Menu />
+      <CallMenu />
     </div>
   );
 }
