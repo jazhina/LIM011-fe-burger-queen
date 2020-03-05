@@ -1,15 +1,14 @@
-//import React, { Component } from 'react';
 import React from 'react';
 // import logo from './logo.svg';
-// import './App.css';
-import Vista1 from './components/vista1.js';
+import Titulo from './components/title';
+import Menu from './components/menu';
 
 function App() {
   return (
-    <div className="App">
-        <Vista1/>
+    <div>
+      <Titulo />
+      <Menu />
     </div>
   );
 }
-
 export default App;
