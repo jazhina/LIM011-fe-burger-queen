@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import firebase from '../conexion/firebase';
-
 import Lista from './categoria';
 
 const Menu = () => {
-  const [count, setCount] = useState([]);
+  const [array, setArray] = useState([]);
 
-  const [value, loading, error] = useCollection(
+  const [value] = useCollection(
     firebase.firestore().collection('menu'),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
@@ -24,11 +23,17 @@ const Menu = () => {
       };
       return obj;
     });
-    const filter = guardar.filter((element) => element.categoria === categoria);
-    console.log(filter);
-  } return (
+    setArray(guardar.filter((element) => element.categoria === categoria));
+    console.log(JSON.stringify(array));
+  }
+
+  function listaDeElementos() {
+    return array
+      .map((element) => <Lista key={element.id} objeto={element} />);
+  }
+
+  return (
     <nav>
-      <Lista />
       <button
         type="button"
         className="btn btn-warning"
@@ -69,10 +74,11 @@ const Menu = () => {
       >
         Bebidas
       </button>
-      <ul>
-        {[]}
-        {count}
-      </ul>
+      <div>
+        <ul>
+          {listaDeElementos()}
+        </ul>
+      </div>
     </nav>
   );
 };
