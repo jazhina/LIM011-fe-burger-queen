@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import firebase from '../conexion/firebase';
-
+import './menu.css';
 import Lista from './categoria';
 
 const Menu = () => {
-  const [count, setCount] = useState([]);
+  const [array, setArray] = useState([]);
 
-  const [value, loading, error] = useCollection(
+  const [value] = useCollection(
     firebase.firestore().collection('menu'),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     },
   );
 
-  function cambiocategoria(categoria) {
+  function ChangeCategory(categoria) {
     const guardar = value.docs.map((element) => {
       const obj = {
         categoria: element.data().categoria,
@@ -24,55 +24,61 @@ const Menu = () => {
       };
       return obj;
     });
-    const filter = guardar.filter((element) => element.categoria === categoria);
-    console.log(filter);
-  } return (
+    setArray(guardar.filter((element) => element.categoria === categoria));
+  }
+  function ListElements() {
+    return array
+      .map((element) => <Lista key={element.id} objeto={element} />);
+  }
+
+  return (
     <nav>
       <Lista />
       <button
         type="button"
-        className="btn btn-warning"
+        className="Desayuno btn btn-info"
         onClick={(event) => {
           event.preventDefault();
-          cambiocategoria('desayuno');
+          ChangeCategory('desayuno');
         }}
       >
         Desayuno
       </button>
       <button
         type="button"
-        className="btn btn-dark"
+        className="Hamburguesa btn btn-dark"
         onClick={(event) => {
           event.preventDefault();
-          cambiocategoria('hamburguesa');
+          ChangeCategory('hamburguesa');
         }}
       >
         Hamburguesa
       </button>
       <button
         type="button"
-        className="btn btn-warning"
+        className="Acompañamiento btn btn-info"
         onClick={(event) => {
           event.preventDefault();
-          cambiocategoria('acompañamiento');
+          ChangeCategory('acompañamiento');
         }}
       >
         Acompañamiento
       </button>
       <button
         type="button"
-        className="btn btn-dark"
+        className="Bebidas btn btn-dark"
         onClick={(event) => {
           event.preventDefault();
-          cambiocategoria('bebidas');
+          ChangeCategory('bebidas');
         }}
       >
         Bebidas
       </button>
-      <ul>
-        {[]}
-        {count}
-      </ul>
+      <div>
+        <ul>
+          {ListElements()}
+        </ul>
+      </div>
     </nav>
   );
 };
