@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import firebase from '../conexion/firebase';
-import Lista from './categoria';
+import './menu.css';
+import List from './categoria';
 
 const Menu = () => {
   const [array, setArray] = useState([]);
@@ -13,7 +14,7 @@ const Menu = () => {
     },
   );
 
-  function cambiocategoria(categoria) {
+  function ChangeCategory(categoria) {
     const guardar = value.docs.map((element) => {
       const obj = {
         categoria: element.data().categoria,
@@ -24,59 +25,60 @@ const Menu = () => {
       return obj;
     });
     setArray(guardar.filter((element) => element.categoria === categoria));
+    // eslint-disable-next-line no-console
     console.log(JSON.stringify(array));
   }
 
   function listaDeElementos() {
     return array
-      .map((element) => <Lista key={element.id} objeto={element} />);
+      .map((element) => <List key={element.id} objeto={element} />);
   }
 
   return (
     <nav>
-      <div className="d-flex flex-row bd-highlight mb-3">
-        <button
-          type="button"
-          className="btn btn-warning p-2 bd-highlight"
-          onClick={(event) => {
-            event.preventDefault();
-            cambiocategoria('desayuno');
-          }}
-        >
-          Desayuno
-        </button>
-        <button
-          type="button"
-          className="btn btn-dark d-flex p-2 bd-highlight"
-          onClick={(event) => {
-            event.preventDefault();
-            cambiocategoria('hamburguesa');
-          }}
-        >
-          Hamburguesa
-        </button>
-        <button
-          type="button"
-          className="btn btn-warning d-flex p-2 bd-highlight"
-          onClick={(event) => {
-            event.preventDefault();
-            cambiocategoria('acompañamiento');
-          }}
-        >
-          Acompañamiento
-        </button>
-        <button
-          type="button"
-          className="btn btn-dark d-flex p-2 bd-highlight"
-          onClick={(event) => {
-            event.preventDefault();
-            cambiocategoria('bebidas');
-          }}
-        >
-          Bebidas
-        </button>
+      <button
+        type="button"
+        className="Desayuno btn btn-info"
+        onClick={(event) => {
+          event.preventDefault();
+          ChangeCategory('desayuno');
+        }}
+      >
+        Desayuno
+      </button>
+      <button
+        type="button"
+        className="Hamburguesa btn btn-dark"
+        onClick={(event) => {
+          event.preventDefault();
+          ChangeCategory('hamburguesa');
+        }}
+      >
+        Hamburguesa
+      </button>
+      <button
+        type="button"
+        className="Acompañamiento btn btn-info"
+        onClick={(event) => {
+          event.preventDefault();
+          ChangeCategory('acompañamiento');
+        }}
+      >
+        Acompañamiento
+      </button>
+      <button
+        type="button"
+        className="Bebidas btn btn-dark"
+        onClick={(event) => {
+          event.preventDefault();
+          ChangeCategory('bebidas');
+        }}
+      >
+        Bebidas
+      </button>
       </div>
       <div />
+           
       <table className="table table-striped">
         <thead>
           <tr>

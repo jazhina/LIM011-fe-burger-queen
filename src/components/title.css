@@ -1,0 +1,20 @@
+.Header {
+  background-color:#00A1B9;
+    height: 90px;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .App-logo {
+    height: 100%;
+    pointer-events: none;
+  }
+  h1{
+    color: #fff;
+    font-family: 'Libre Franklin', sans-serif;
+  }
+  body{
+    background: #efefbb; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #efefbb, #d4d3dd); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #efefbb, #d4d3dd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
