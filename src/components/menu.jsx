@@ -76,6 +76,9 @@ const Menu = () => {
       >
         Bebidas
       </button>
+      </div>
+      <div />
+           
       <table className="table table-striped">
         <thead>
           <tr>
