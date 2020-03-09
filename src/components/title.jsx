@@ -5,7 +5,7 @@ import './title.css';
 const Titulo = () => (
   <div>
     <header className="Header border border-dark d-flex p-2 bd-highlight">
-      <h1 className="border border-light d-inline-flex p-2 bd-highlight">BURGER QUEEN</h1>
+      <h1 className=" d-inline-flex p-2 bd-highlight">BURGER QUEEN</h1>
       <img src={Logo} className="App-logo" alt="logo" />
     </header>
   </div>

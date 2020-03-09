@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import firebase from '../conexion/firebase';
 import './menu.css';
-import Lista from './categoria';
+import List from './categoria';
 
 const Menu = () => {
   const [array, setArray] = useState([]);
@@ -25,15 +25,17 @@ const Menu = () => {
       return obj;
     });
     setArray(guardar.filter((element) => element.categoria === categoria));
+    // eslint-disable-next-line no-console
+    console.log(JSON.stringify(array));
   }
-  function ListElements() {
+
+  function listaDeElementos() {
     return array
-      .map((element) => <Lista key={element.id} objeto={element} />);
+      .map((element) => <List key={element.id} objeto={element} />);
   }
 
   return (
     <nav>
-      <Lista />
       <button
         type="button"
         className="Desayuno btn btn-info"
@@ -74,11 +76,18 @@ const Menu = () => {
       >
         Bebidas
       </button>
-      <div>
-        <ul>
-          {ListElements()}
-        </ul>
-      </div>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Agregar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {listaDeElementos()}
+        </tbody>
+      </table>
     </nav>
   );
 };
