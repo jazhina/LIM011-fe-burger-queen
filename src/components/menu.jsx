@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import firebase from '../conexion/firebase';
 import './menu.css';
-import List from './categoria';
+import List from './category';
 
 const Menu = () => {
   const [array, setArray] = useState([]);
 
-  const [value] = useCollection(
+  const [value, loading, error] = useCollection(
     firebase.firestore().collection('menu'),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
@@ -29,7 +29,13 @@ const Menu = () => {
     console.log(JSON.stringify(array));
   }
 
-  function listaDeElementos() {
+  function ListElements() {
+    if (loading) {
+      return 'Cargando...';
+    }
+    if (error) {
+      return 'Hubo un error';
+    }
     return array
       .map((element) => <List key={element.id} objeto={element} />);
   }
@@ -76,9 +82,9 @@ const Menu = () => {
       >
         Bebidas
       </button>
-      </div>
-      <div />
-           
+      {/*    {
+        loading && <span> Cargando ... </span>
+      } */}
       <table className="table table-striped">
         <thead>
           <tr>
@@ -88,7 +94,7 @@ const Menu = () => {
           </tr>
         </thead>
         <tbody>
-          {listaDeElementos()}
+          {ListElements()}
         </tbody>
       </table>
     </nav>
