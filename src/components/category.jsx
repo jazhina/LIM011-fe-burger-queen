@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AñadirPedido from './order';
+// import Order from './order';
 // import { useCollection } from 'react-firebase-hooks/firestore';
 
-function List({ objeto }) {
+function List({ objeto, agregar }) {
   return (
     <tr>
       <td>{objeto.descripcion}</td>
@@ -15,7 +15,9 @@ function List({ objeto }) {
           alt="Añadir producto"
           onClick={(event) => {
             event.preventDefault();
-            AñadirPedido(objeto);
+            console.log(objeto);
+            agregar(objeto);
+            // Order(objeto);
           }}
         />
       </td>
@@ -29,5 +31,6 @@ List.propTypes = {
       descripcion: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,
     }).isRequired,
+  agregar: PropTypes.func.isRequired,
 };
 export default List;
