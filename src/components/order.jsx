@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import AddProducts from './addProducts';
 
-function Order({ listaproductos }) {
-  const [arrAddProducts, setArrAddProducts] = useState([]);
+function Order({ PrintListProducts }) {
+  /* const [arrAddProducts, setArrAddProducts] = useState([]);
 
   function SaveObjtInArray() {
     const newArr = arrAddProducts.concat([listaproductos]);
     setArrAddProducts(newArr);
-  }
+  } */
 
   return (
     <table className="tabla table table-bordered table-dark">
@@ -23,13 +23,15 @@ function Order({ listaproductos }) {
         </tr>
       </thead>
       <tbody>
-        {arrAddProducts.map((element) => <AddProducts key={element.id} PrintListProducts={element} />)}
+
+        <AddProducts key={PrintListProducts.id} PrintListProducts={PrintListProducts} />
+        )
       </tbody>
     </table>
   );
 }
 Order.propTypes = {
-  listaproductos: PropTypes
+  PrintListProducts: PropTypes
     .shape({
       producto: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,

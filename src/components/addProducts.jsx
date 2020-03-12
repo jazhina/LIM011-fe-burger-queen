@@ -22,7 +22,6 @@ function AddProducts({ PrintListProducts }) {
       <td>{PrintListProducts.producto}</td>
       <td>{PrintListProducts.precio}</td>
       <td><input type="image" src="https://img.icons8.com/clouds/100/000000/trash.png" alt="Eliminar producto" /></td>
-      console.log(array);
     </tr>
   );
 }

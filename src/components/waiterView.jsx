@@ -14,10 +14,14 @@ function WaiterView() {
     console.log(arrOrder);
     setArrOrder(newobj);
   };
+  function prueba() {
+    return arrOrder
+      .map((element) => <Order listaproductos={element} />);
+  }
   return (
     <div>
-      <Menu agregar={agregarProductoAlPedido} />
-      <Order listaproductos={arrOrder} />
+      <Menu agregar={agregarProductoAlPedido} PrintListProducts={prueba} />
+      <Order PrintListProducts={prueba} />
     </div>
   );
 }

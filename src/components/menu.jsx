@@ -4,7 +4,7 @@ import firebase from '../conexion/firebase';
 import './menu.css';
 import List from './category';
 
-const Menu = ({ agregar }) => {
+const Menu = ({ agregar, PrintListProducts }) => {
   const [array, setArray] = useState([]);
 
   const [value, loading, error] = useCollection(
@@ -36,7 +36,7 @@ const Menu = ({ agregar }) => {
       return 'Hubo un error.';
     }
     return array
-      .map((products) => <List key={products.id} objeto={products} agregar={agregar} />);
+      .map((products) => <List key={products.id} objeto={products} agregar={agregar} PrintListProducts={PrintListProducts} />);
   }
 
   return (

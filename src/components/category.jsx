@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function List({ objeto, agregar }) {
+function List({ objeto, agregar, PrintListProducts }) {
   return (
     <tr>
       <td>{objeto.descripcion}</td>
@@ -15,6 +15,7 @@ function List({ objeto, agregar }) {
           onClick={(event) => {
             event.preventDefault();
             agregar(objeto);
+            PrintListProducts(objeto);
           }}
         />
       </td>
