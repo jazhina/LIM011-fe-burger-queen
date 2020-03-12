@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import firebase from '../conexion/firebase';
 import './menu.css';
-import List from './categoria';
+import List from './category';
 
-const Menu = () => {
+const Menu = ({ agregar }) => {
   const [array, setArray] = useState([]);
 
-  const [value] = useCollection(
+  const [value, loading, error] = useCollection(
     firebase.firestore().collection('menu'),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
@@ -15,7 +15,7 @@ const Menu = () => {
   );
 
   function ChangeCategory(categoria) {
-    const guardar = value.docs.map((element) => {
+    const save = value.docs.map((element) => {
       const obj = {
         categoria: element.data().categoria,
         descripcion: element.data().item,
@@ -24,14 +24,19 @@ const Menu = () => {
       };
       return obj;
     });
-    setArray(guardar.filter((element) => element.categoria === categoria));
+    setArray(save.filter((products) => products.categoria === categoria));
     // eslint-disable-next-line no-console
     console.log(JSON.stringify(array));
   }
 
-  function listaDeElementos() {
+  function ListElements() {
+    if (loading) {
+      return 'Cargando...';
+    } if (error) {
+      return 'Hubo un error.';
+    }
     return array
-      .map((element) => <List key={element.id} objeto={element} />);
+      .map((products) => <List key={products.id} objeto={products} agregar={agregar} />);
   }
 
   return (
@@ -77,7 +82,7 @@ const Menu = () => {
         Bebidas
       </button>
       <table className="table table-striped">
-        <thead>
+        <thead className="tabla-orden">
           <tr>
             <th scope="col">Producto</th>
             <th scope="col">Precio</th>
@@ -85,7 +90,7 @@ const Menu = () => {
           </tr>
         </thead>
         <tbody>
-          {listaDeElementos()}
+          {ListElements()}
         </tbody>
       </table>
     </nav>
