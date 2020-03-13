@@ -1,31 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddProducts from './addProducts';
 
-function Order({ listaproductos }) {
-  const array = [];
-  array.push(listaproductos.map((element) => (
-    <tr>
-      <td>
-        <input
-          type="image"
-          src="https://img.icons8.com/ultraviolet/40/000000/minus.png"
-          alt="Restar producto"
-        />
-      </td>
-      <td>{element.cantidad}</td>
-      <td>
-        <input
-          type="image"
-          src="https://img.icons8.com/ultraviolet/40/000000/add.png"
-          alt="Añadir producto"
-        />
-      </td>
-      <td>{element.producto}</td>
-      <td>{element.precio}</td>
-      <td><input type="image" src="https://img.icons8.com/clouds/100/000000/trash.png" alt="Eliminar producto" /></td>
-    </tr>
-  )));
+function Order({ agregar }) {
+/*   const [arrayOrder, setArrayOrder] = useState([]);
+  const newarray = arrayOrder.concat([agregar]);
+  setArrayOrder(newarray);
+  console.log({ agregar });
 
+  function Listproducts() {
+    return arrayOrder
+      .map((element) => <AddProducts key={element.id} agregar={agregar} />);
+  } */
   return (
     <table className="table table-bordered table-dark">
       <thead>
@@ -39,7 +25,7 @@ function Order({ listaproductos }) {
         </tr>
       </thead>
       <tbody>
-        {array}
+        <td>{agregar.precio}</td>
       </tbody>
     </table>
   );
@@ -51,7 +37,6 @@ Order.propTypes = {
       precio: PropTypes.number.isRequired,
       cantidad: PropTypes.number.isRequired,
     }).isRequired,
-  // array: PropTypes.PropTypes.arrayOf(PropTypes.ofType([PropTypes.number, PropTypes.string])).isRequired,
 };
 
 export default Order;

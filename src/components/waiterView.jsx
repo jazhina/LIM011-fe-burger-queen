@@ -11,13 +11,18 @@ function WaiterView() {
       precio: obj.precio,
       cantidad: 1,
     };
-    console.log(arrOrder);
-    setArrOrder(newobj);
+    const newArray = arrOrder.concat([newobj]);
+    setArrOrder(newArray);
+    console.log(newArray);
   };
   return (
-    <div>
-      <Menu agregar={agregarProductoAlPedido} />
-      <Order listaproductos={arrOrder} />
+    <div className="d-flex bd-highlight">
+      <div className="p-2 flex-fill bd-highlight">
+        <Menu agregar={agregarProductoAlPedido} />
+      </div>
+      <div className="p-2 flex-fill bd-highlight">
+        <Order agregar={agregarProductoAlPedido} />
+      </div>
     </div>
   );
 }
