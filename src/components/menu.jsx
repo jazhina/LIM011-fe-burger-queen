@@ -4,7 +4,7 @@ import firebase from '../conexion/firebase';
 import './menu.css';
 import List from './category';
 
-const Menu = ({ agregar, PrintListProducts }) => {
+const Menu = ({ agregar }) => {
   const [array, setArray] = useState([]);
 
   const [value, loading, error] = useCollection(
@@ -32,11 +32,12 @@ const Menu = ({ agregar, PrintListProducts }) => {
   function ListElements() {
     if (loading) {
       return 'Cargando...';
-    } if (error) {
-      return 'Hubo un error.';
+    }
+    if (error) {
+      return 'Hubo un error';
     }
     return array
-      .map((products) => <List key={products.id} objeto={products} agregar={agregar} PrintListProducts={PrintListProducts} />);
+      .map((element) => <List key={element.id} objeto={element} agregar={agregar} />);
   }
 
   return (
@@ -81,6 +82,9 @@ const Menu = ({ agregar, PrintListProducts }) => {
       >
         Bebidas
       </button>
+      {/*    {
+        loading && <span> Cargando ... </span>
+      } */}
       <table className="table table-striped">
         <thead className="tabla-orden">
           <tr>

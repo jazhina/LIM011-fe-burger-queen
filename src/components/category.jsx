@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import Order from './order';
+// import { useCollection } from 'react-firebase-hooks/firestore';
 
-function List({ objeto, agregar, PrintListProducts }) {
+function List({ objeto, agregar }) {
   return (
     <tr>
       <td>{objeto.descripcion}</td>
       <td>{objeto.precio}</td>
       <td>
-
         <input
           type="image"
           src="https://img.icons8.com/ultraviolet/40/000000/add.png"
-          alt="add product"
+          alt="Añadir producto"
           onClick={(event) => {
             event.preventDefault();
+            console.log(objeto);
             agregar(objeto);
-            PrintListProducts(objeto);
+            // Order(objeto);
           }}
         />
       </td>
@@ -30,7 +32,5 @@ List.propTypes = {
       precio: PropTypes.number.isRequired,
     }).isRequired,
   agregar: PropTypes.func.isRequired,
-
 };
-
 export default List;

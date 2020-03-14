@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddProducts from './addProducts';
 
-function Order({ PrintListProducts }) {
-  /* const [arrAddProducts, setArrAddProducts] = useState([]);
+function Order() {
+/*   const [arrayOrder, setArrayOrder] = useState([]);
+  const newarray = arrayOrder.concat([agregar]);
+  setArrayOrder(newarray);
+  console.log({ agregar });
 
-  function SaveObjtInArray() {
-    const newArr = arrAddProducts.concat([listaproductos]);
-    setArrAddProducts(newArr);
+  function Listproducts() {
+    return arrayOrder
+      .map((element) => <AddProducts key={element.id} agregar={agregar} />);
   } */
-
   return (
-    <table className="tabla table table-bordered table-dark">
+    <table className="table table-bordered table-dark">
       <thead>
         <tr>
           <th scope="col">-</th>
@@ -23,15 +25,13 @@ function Order({ PrintListProducts }) {
         </tr>
       </thead>
       <tbody>
-
-        <AddProducts key={PrintListProducts.id} PrintListProducts={PrintListProducts} />
-        )
+        <td> </td>
       </tbody>
     </table>
   );
 }
 Order.propTypes = {
-  PrintListProducts: PropTypes
+  listaproductos: PropTypes
     .shape({
       producto: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,

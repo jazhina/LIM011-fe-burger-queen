@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import Order from './order';
+// import { useCollection } from 'react-firebase-hooks/firestore';
 
-function AddProducts({ PrintListProducts }) {
+function AddProducts({ agregar }) {
+  console.log(agregar);
   return (
     <tr>
       <td>
@@ -11,7 +14,7 @@ function AddProducts({ PrintListProducts }) {
           alt="Restar producto"
         />
       </td>
-      <td>{PrintListProducts.cantidad}</td>
+      <td>{agregar.cantidad}</td>
       <td>
         <input
           type="image"
@@ -19,17 +22,17 @@ function AddProducts({ PrintListProducts }) {
           alt="Añadir producto"
         />
       </td>
-      <td>{PrintListProducts.producto}</td>
-      <td>{PrintListProducts.precio}</td>
+      <td>{agregar.producto}</td>
+      <td>{agregar.precio}</td>
       <td><input type="image" src="https://img.icons8.com/clouds/100/000000/trash.png" alt="Eliminar producto" /></td>
     </tr>
   );
 }
+
 AddProducts.propTypes = {
-  PrintListProducts: PropTypes
+  objeto: PropTypes
     .shape({
-      producto: PropTypes.string.isRequired,
-      cantidad: PropTypes.number.isRequired,
+      descripcion: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,
     }).isRequired,
 };
