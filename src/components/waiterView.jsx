@@ -4,30 +4,29 @@ import Order from './order';
 
 function WaiterView() {
   const [arrOrder, setArrOrder] = useState([]);
-  const [cantidad, setCantidad] = useState(1);
 
   const agregarProductoAlPedido = (obj) => {
     const newobj = {
       producto: obj.descripcion,
       precio: obj.precio,
       id: obj.id,
-      cantidad,
+      cantidad: 1,
     };
-    const saveId = obj.id;
+    const filterProducts = arrOrder.filter((element) => element.id === newobj.id);
     const newArray = arrOrder.concat([newobj]);
-    newArray.map((element) => element.id === saveId);
-    setArrOrder(newArray);
-    setCantidad(cantidad + 1);
-    /* const add = () => {
-      const nuevoValor = cantidad + 1;
-      setCantidad(nuevoValor);
-    }; */
-    /* const nuevoValors = arrOrder.map((products2) => products2.cantidad + 1);
-    setCantidad(nuevoValors);
-    */
-    /* const find = newArray.map((element) => element.id === saveId);
-    setArrOrder(find);
-    console.log(find); */
+    const mapProducts = arrOrder.map((element) => {
+      const elementCantidad = element;
+      if (element.id === newobj.id) elementCantidad.cantidad += 1;
+      console.log(elementCantidad);
+
+      return elementCantidad;
+    });
+
+    if (filterProducts.length === 0) {
+      setArrOrder(newArray);
+    } else {
+      setArrOrder(mapProducts);
+    }
   };
 
   return (

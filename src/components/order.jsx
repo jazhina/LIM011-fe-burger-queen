@@ -2,16 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddProducts from './addProducts';
 
-function Order() {
-/*   const [arrayOrder, setArrayOrder] = useState([]);
-  const newarray = arrayOrder.concat([agregar]);
-  setArrayOrder(newarray);
+function Order({ agregar }) {
   console.log({ agregar });
 
-  function Listproducts() {
-    return arrayOrder
-      .map((element) => <AddProducts key={element.id} agregar={agregar} />);
-  } */
   return (
     <table className="table table-bordered table-dark">
       <thead>
@@ -25,7 +18,8 @@ function Order() {
         </tr>
       </thead>
       <tbody>
-        <td> </td>
+
+        <AddProducts agregar={agregar} />
       </tbody>
     </table>
   );
