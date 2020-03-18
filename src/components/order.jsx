@@ -4,7 +4,10 @@ import AddProducts from './addProducts';
 
 function Order({ agregar }) {
   console.log(agregar);
-
+  function recorre() {
+    return agregar
+      .map((element) => <AddProducts agregar={element} />);
+  }
   return (
     <table className="table table-bordered table-dark">
       <thead>
@@ -18,8 +21,7 @@ function Order({ agregar }) {
         </tr>
       </thead>
       <tbody>
-
-        <AddProducts agregar={agregar} />
+        {recorre()}
       </tbody>
     </table>
   );
