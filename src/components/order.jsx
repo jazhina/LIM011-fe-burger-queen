@@ -3,15 +3,11 @@ import PropTypes from 'prop-types';
 import AddProducts from './addProducts';
 
 function Order({ agregar }) {
-/*   const [arrayOrder, setArrayOrder] = useState([]);
-  const newarray = arrayOrder.concat([agregar]);
-  setArrayOrder(newarray);
-  console.log({ agregar });
-
-  function Listproducts() {
-    return arrayOrder
-      .map((element) => <AddProducts key={element.id} agregar={agregar} />);
-  } */
+  console.log(agregar);
+  function recorre() {
+    return agregar
+      .map((element) => <AddProducts agregar={element} />);
+  }
   return (
     <table className="table table-bordered table-dark">
       <thead>
@@ -25,7 +21,7 @@ function Order({ agregar }) {
         </tr>
       </thead>
       <tbody>
-        <td>{agregar.precio}</td>
+        {recorre()}
       </tbody>
     </table>
   );

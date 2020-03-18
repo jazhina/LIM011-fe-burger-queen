@@ -15,7 +15,7 @@ const Menu = ({ agregar }) => {
   );
 
   function ChangeCategory(categoria) {
-    const guardar = value.docs.map((element) => {
+    const save = value.docs.map((element) => {
       const obj = {
         categoria: element.data().categoria,
         descripcion: element.data().item,
@@ -24,7 +24,7 @@ const Menu = ({ agregar }) => {
       };
       return obj;
     });
-    setArray(guardar.filter((element) => element.categoria === categoria));
+    setArray(save.filter((products) => products.categoria === categoria));
     // eslint-disable-next-line no-console
     console.log(JSON.stringify(array));
   }
@@ -86,7 +86,7 @@ const Menu = ({ agregar }) => {
         loading && <span> Cargando ... </span>
       } */}
       <table className="table table-striped">
-        <thead>
+        <thead className="tabla-orden">
           <tr>
             <th scope="col">Producto</th>
             <th scope="col">Precio</th>

@@ -30,8 +30,10 @@ function AddProducts({ agregar }) {
 }
 
 AddProducts.propTypes = {
-  objeto: PropTypes
+  agregar: PropTypes
     .shape({
+      cantidad: PropTypes.number.isRequired,
+      producto: PropTypes.string.isRequired,
       descripcion: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,
     }).isRequired,
