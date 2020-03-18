@@ -35,7 +35,7 @@ function WaiterView() {
         <Menu agregar={agregarProductoAlPedido} />
       </div>
       <div className="p-2 flex-fill bd-highlight">
-        <Order agregar={agregarProductoAlPedido} />
+        <Order agregar={arrOrder} />
       </div>
     </div>
   );

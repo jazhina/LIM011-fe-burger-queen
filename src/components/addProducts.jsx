@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // import { useCollection } from 'react-firebase-hooks/firestore';
 
 function AddProducts({ agregar }) {
-  console.log({ agregar });
+  console.log(agregar);
   return (
     <tr>
       <td>

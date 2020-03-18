@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AddProducts from './addProducts';
 
 function Order({ agregar }) {
-  console.log({ agregar });
+  console.log(agregar);
 
   return (
     <table className="table table-bordered table-dark">
