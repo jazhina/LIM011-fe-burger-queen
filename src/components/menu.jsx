@@ -4,7 +4,7 @@ import firebase from '../conexion/firebase';
 import './menu.css';
 import List from './category';
 
-const Menu = ({ agregar }) => {
+const Menu = ({ agregar, total }) => {
   const [array, setArray] = useState([]);
 
   const [value, loading, error] = useCollection(
@@ -37,7 +37,7 @@ const Menu = ({ agregar }) => {
       return 'Hubo un error';
     }
     return array
-      .map((element) => <List key={element.id} objeto={element} agregar={agregar} />);
+      .map((element) => <List key={element.id} objeto={element} agregar={agregar} total={total} />);
   }
 
   return (
@@ -82,9 +82,6 @@ const Menu = ({ agregar }) => {
       >
         Bebidas
       </button>
-      {/*    {
-        loading && <span> Cargando ... </span>
-      } */}
       <table className="table table-striped">
         <thead className="tabla-orden">
           <tr>

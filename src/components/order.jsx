@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AddProducts from './addProducts';
 
-function Order({ agregar, addoperation }) {
+function Order({ agregar, addOperation, total }) {
   const [client, setclient] = useState('');
   function recorre() {
     return agregar
-      .map((element) => <AddProducts agregar={element} addoperation={addoperation} />);
+      .map((element) => <AddProducts agregar={element} addOperation={addOperation} total={total} />);
   }
   function NameClient(event) {
     // event.preventDefault();
@@ -33,17 +33,19 @@ function Order({ agregar, addoperation }) {
           {recorre()}
         </tbody>
         <td>Total</td>
+        {total()}
       </table>
     </div>
   );
 }
 Order.propTypes = {
-  listaproductos: PropTypes
+  agregar: PropTypes
     .shape({
       producto: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,
       cantidad: PropTypes.number.isRequired,
     }).isRequired,
+  addOperation: PropTypes.func.isRequired,
 };
 
 export default Order;

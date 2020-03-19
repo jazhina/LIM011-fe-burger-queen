@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // import Order from './order';
 // import { useCollection } from 'react-firebase-hooks/firestore';
 
-function List({ objeto, agregar }) {
+function List({ objeto, agregar, total }) {
   return (
     <tr>
       <td>{objeto.descripcion}</td>
@@ -17,7 +17,7 @@ function List({ objeto, agregar }) {
             event.preventDefault();
             console.log(objeto);
             agregar(objeto, true);
-            // Order(objeto);
+            total(objeto);
           }}
         />
       </td>
