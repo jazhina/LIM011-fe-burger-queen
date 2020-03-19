@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Order from './order';
-// import { useCollection } from 'react-firebase-hooks/firestore';
 
-function AddProducts({ agregar, addoperation }) {
+function AddProducts({ agregar, addOperation }) {
   console.log(agregar);
-
   return (
     <tr>
       <td>
@@ -15,8 +12,7 @@ function AddProducts({ agregar, addoperation }) {
           alt="Restar producto"
           onClick={(event) => {
             event.preventDefault();
-            addoperation(agregar, false);
-            // Order(objeto);
+            addOperation(agregar, false);
           }}
         />
       </td>
@@ -28,8 +24,7 @@ function AddProducts({ agregar, addoperation }) {
           alt="Añadir producto"
           onClick={(event) => {
             event.preventDefault();
-            addoperation(agregar, true);
-            // Order(objeto);
+            addOperation(agregar, true);
           }}
         />
       </td>
@@ -42,8 +37,7 @@ function AddProducts({ agregar, addoperation }) {
           alt="Eliminar producto"
           onClick={(event) => {
             event.preventDefault();
-            addoperation(agregar, 'delete');
-            // Order(objeto);
+            addOperation(agregar, 'delete');
           }}
         />
       </td>
@@ -60,5 +54,6 @@ AddProducts.propTypes = {
       descripcion: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,
     }).isRequired,
+  addOperation: PropTypes.func.isRequired,
 };
 export default AddProducts;

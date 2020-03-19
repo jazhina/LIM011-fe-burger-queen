@@ -23,7 +23,7 @@ function WaiterView() {
           elementCantidad.cantidad -= 1;
         } else if (operacion === 'delete') {
           elementCantidad = arrOrder.splice(arrOrder, 0);
-          console.log(arrOrder.splice(arrOrder, 0));
+          // console.log(arrOrder.splice(arrOrder, 0));
         }
       }
 
@@ -31,13 +31,6 @@ function WaiterView() {
 
       return elementCantidad;
     });
-    /*   const delete = arrOrder.filter((element) => {
-      if (element.id === newobj.id) {
-
-      }
-
-    }) */
-
     if (filterProducts.length === 0) {
       setArrOrder(newArray);
     } else {
@@ -51,7 +44,7 @@ function WaiterView() {
         <Menu agregar={agregarProductoAlPedido} />
       </div>
       <div className="p-2 flex-fill bd-highlight">
-        <Order agregar={arrOrder} addoperation={agregarProductoAlPedido} />
+        <Order agregar={arrOrder} addOperation={agregarProductoAlPedido} />
       </div>
     </div>
   );
