@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function AddProducts({ agregar, addOperation }) {
+function AddProducts({ agregar, addOperation, total }) {
   console.log(agregar);
   return (
     <tr>
@@ -25,11 +25,12 @@ function AddProducts({ agregar, addOperation }) {
           onClick={(event) => {
             event.preventDefault();
             addOperation(agregar, true);
+            total(agregar);
           }}
         />
       </td>
       <td>{agregar.producto}</td>
-      <td>{agregar.precio}</td>
+      <td>{agregar.precio * agregar.cantidad}</td>
       <td>
         <input
           type="image"

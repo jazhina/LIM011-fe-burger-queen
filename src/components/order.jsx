@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AddProducts from './addProducts';
 
-function Order({ agregar, addOperation }) {
+function Order({ agregar, addOperation, total }) {
   const [client, setclient] = useState('');
   function recorre() {
     return agregar
-      .map((element) => <AddProducts agregar={element} addOperation={addOperation} />);
+      .map((element) => <AddProducts agregar={element} addOperation={addOperation} total={total} />);
   }
   function NameClient(event) {
     // event.preventDefault();
@@ -33,6 +33,7 @@ function Order({ agregar, addOperation }) {
           {recorre()}
         </tbody>
         <td>Total</td>
+        {total()}
       </table>
     </div>
   );
