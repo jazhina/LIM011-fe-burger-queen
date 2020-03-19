@@ -16,7 +16,7 @@ function List({ objeto, agregar }) {
           onClick={(event) => {
             event.preventDefault();
             console.log(objeto);
-            agregar(objeto);
+            agregar(objeto, true);
             // Order(objeto);
           }}
         />
