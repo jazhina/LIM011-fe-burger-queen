@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function AddProducts({
-  agregar, addOperation, total, deletePro,
+  data, addOperation, total, eliminar,
 }) {
-  console.log(agregar);
+  console.log(data);
   return (
     <tr>
       <td>
@@ -14,11 +14,11 @@ function AddProducts({
           alt="Restar producto"
           onClick={(event) => {
             event.preventDefault();
-            addOperation(agregar, false);
+            addOperation(data, false);
           }}
         />
       </td>
-      <td>{agregar.cantidad}</td>
+      <td>{data.cantidad}</td>
       <td>
         <input
           type="image"
@@ -26,21 +26,21 @@ function AddProducts({
           alt="Añadir producto"
           onClick={(event) => {
             event.preventDefault();
-            addOperation(agregar, true);
-            total(agregar);
+            addOperation(data, true);
+            total(data);
           }}
         />
       </td>
-      <td>{agregar.producto}</td>
-      <td>{agregar.precio * agregar.cantidad}</td>
+      <td>{data.producto}</td>
+      <td>{data.precio * data.cantidad}</td>
       <td>
         <input
           type="image"
-          src="https://img.icons8.com/clouds/100/000000/trash.png"
+          src="https://img.icons8.com/officel/40/000000/delete-sign.png"
           alt="Eliminar producto"
           onClick={(event) => {
             event.preventDefault();
-            deletePro(agregar);
+            eliminar(data);
           }}
         />
       </td>
@@ -50,7 +50,7 @@ function AddProducts({
 }
 
 AddProducts.propTypes = {
-  agregar: PropTypes
+  data: PropTypes
     .shape({
       cantidad: PropTypes.number.isRequired,
       producto: PropTypes.string.isRequired,
@@ -58,5 +58,7 @@ AddProducts.propTypes = {
       precio: PropTypes.number.isRequired,
     }).isRequired,
   addOperation: PropTypes.func.isRequired,
+  eliminar: PropTypes.func.isRequired,
+  total: PropTypes.func.isRequired,
 };
 export default AddProducts;

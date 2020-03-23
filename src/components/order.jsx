@@ -3,20 +3,17 @@ import PropTypes from 'prop-types';
 import AddProducts from './addProducts';
 
 function Order({
-  agregar, addOperation, total, deletePro,
+  data, addOperation, total, eliminar,
 }) {
   const [client, setclient] = useState('');
-  function recorre() {
-    return agregar
-      .map((element) => <AddProducts agregar={element} addOperation={addOperation} total={total} deletePro={deletePro} />);
-  }
-  function send() {
-    if (client === '') {
-      alert('no hay nombre');
-    } else {
-      console.log(agregar);
-    }
-  }
+  const recorre = () => data.map((element) => (
+    <AddProducts
+      data={element}
+      addOperation={addOperation}
+      total={total}
+      eliminar={eliminar}
+    />
+  ));
   function NameClient(event) {
     // event.preventDefault();
     const valor = event.target.value;
@@ -40,47 +37,53 @@ function Order({
         </thead>
         <tbody>
           {recorre()}
+          <tr>
+            <th COLSPAN="3">Total</th>
+            <th>S/ </th>
+            <th COLSPAN="2">
+              {total()}
+            </th>
+          </tr>
         </tbody>
-        <td>Total</td>
-        {total()}
       </table>
       <div className="container">
-        <h2>Modal Example</h2>
-        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          Open modal
-        </button>
-        <div className="modal" id="myModal">
+        <a href="#exampleModal" className="btn btn-primary btn-lg" data-toggle="modal">
+          Confirmar pedido
+        </a>
+
+        <div className="modal fade" id="exampleModal">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h4 className="modal-title">Modal Heading</h4>
-                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                <h5 className="modal-title">Modal title</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-
               <div className="modal-body">
-                Modal body..
+                ...
               </div>
-
               <div className="modal-footer">
-                <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
               </div>
-
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
 }
 Order.propTypes = {
-  agregar: PropTypes
+  data: PropTypes
     .shape({
       producto: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,
       cantidad: PropTypes.number.isRequired,
     }).isRequired,
   addOperation: PropTypes.func.isRequired,
+  total: PropTypes.func.isRequired,
+  eliminar: PropTypes.func.isRequired,
 };
 
 export default Order;
