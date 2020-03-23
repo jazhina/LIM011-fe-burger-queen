@@ -16,6 +16,14 @@ function WaiterView() {
     return total;
   };
 
+  const deletePro = () => {
+    const deletePro2 = arrOrder.filter((element) => element.id === arrOrder.id) ? arrOrder.splice(arrOrder, 0) : arrOrder;
+    console.log(deletePro2);
+
+    return deletePro2;
+  };
+
+
   const agregarProductoAlPedido = (obj, operacion) => {
     const newobj = {
       producto: obj.descripcion,
@@ -26,14 +34,12 @@ function WaiterView() {
     const filterProducts = arrOrder.filter((element) => element.id === newobj.id);
     const newArray = arrOrder.concat([newobj]);
     const mapProducts = arrOrder.map((element) => {
-      let elementCantidad = element;
+      const elementCantidad = element;
       if (element.id === newobj.id) {
         if (operacion === true) {
           elementCantidad.cantidad += 1;
         } else if (operacion === false) {
           elementCantidad.cantidad -= 1;
-        } else if (operacion === 'delete') {
-          elementCantidad = arrOrder.splice(arrOrder, 0);
         }
       }
       return elementCantidad;
@@ -51,7 +57,7 @@ function WaiterView() {
         <Menu agregar={agregarProductoAlPedido} total={buttonTotal} />
       </div>
       <div className="p-2 flex-fill bd-highlight">
-        <Order agregar={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} />
+        <Order agregar={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} deletePro={deletePro} />
       </div>
     </div>
   );

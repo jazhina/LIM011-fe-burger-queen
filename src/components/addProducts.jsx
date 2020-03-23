@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function AddProducts({ agregar, addOperation, total }) {
+function AddProducts({
+  agregar, addOperation, total, deletePro,
+}) {
   console.log(agregar);
   return (
     <tr>
@@ -38,7 +40,7 @@ function AddProducts({ agregar, addOperation, total }) {
           alt="Eliminar producto"
           onClick={(event) => {
             event.preventDefault();
-            addOperation(agregar, 'delete');
+            deletePro(agregar);
           }}
         />
       </td>
