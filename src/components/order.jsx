@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import firebase from 'firebase';
 import AddProducts from './addProducts';
 
 function Order({
-  data, addOperation, total, eliminar,
+  data, addOperation, total, eliminar, newtotal,
 }) {
+  console.log(total);
   const [client, setclient] = useState('');
   const recorre = () => data.map((element) => (
     <AddProducts
@@ -20,6 +22,26 @@ function Order({
     console.log(valor);
     setclient(valor);
   }
+  const SendOrder = () => {
+    if (client === '') {
+      alert('Ingresar nombre del cliente');
+    }
+  };
+
+  const SendKitchen = (obj) => {
+    const newobj = {
+      cliente: client,
+      order: obj,
+      total: newtotal,
+      fecha: new Date(),
+    };
+    firebase.firestore()
+      .collection('orders')
+      .add({
+        newobj,
+      });
+    console.log(newobj);
+  };
   return (
     <div>
       <span>Nombre del cliente</span>
@@ -41,31 +63,49 @@ function Order({
             <th COLSPAN="3">Total</th>
             <th>S/ </th>
             <th COLSPAN="2">
-              {total()}
+              {newtotal}
             </th>
           </tr>
         </tbody>
       </table>
       <div className="container">
-        <a href="#exampleModal" className="btn btn-primary btn-lg" data-toggle="modal">
+        <button
+          type="button"
+          className="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          onClick={(event) => {
+            event.preventDefault();
+            SendOrder();
+          }}
+        >
           Confirmar pedido
-        </a>
+        </button>
 
         <div className="modal fade" id="exampleModal">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Modal title</h5>
+                <h5 className="modal-title">Confirmar pedido</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
-                ...
+                Enviar a cocina ...
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    SendKitchen(data);
+                  }}
+                >
+                  Enviar a cocina
+                </button>
               </div>
             </div>
           </div>

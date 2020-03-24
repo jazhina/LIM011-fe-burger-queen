@@ -4,7 +4,7 @@ import Order from './order';
 
 function WaiterView() {
   const [arrOrder, setArrOrder] = useState([]);
-
+  const [arrtotal, setArrTotal] = useState(0);
   const buttonTotal = () => {
     let total = 0;
     arrOrder.forEach((element) => {
@@ -13,7 +13,7 @@ function WaiterView() {
       total += (price * quantity);
       console.log(total);
     });
-    return total;
+    setArrTotal(total);
   };
 
   function Delete(data) {
@@ -58,7 +58,7 @@ function WaiterView() {
         <Menu agregar={agregarProductoAlPedido} total={buttonTotal} />
       </div>
       <div className="p-2 flex-fill bd-highlight">
-        <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} />
+        <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} newtotal={arrtotal} />
       </div>
     </div>
   );
