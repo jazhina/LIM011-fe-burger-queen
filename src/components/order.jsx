@@ -63,7 +63,7 @@ function Order({
             <th COLSPAN="3">Total</th>
             <th>S/ </th>
             <th COLSPAN="2">
-              {newtotal}
+              {total()}
             </th>
           </tr>
         </tbody>
@@ -124,6 +124,7 @@ Order.propTypes = {
   addOperation: PropTypes.func.isRequired,
   total: PropTypes.func.isRequired,
   eliminar: PropTypes.func.isRequired,
+  newtotal: PropTypes.number.isRequired,
 };
 
 export default Order;

@@ -11,9 +11,9 @@ function WaiterView() {
       const price = element.precio;
       const quantity = element.cantidad;
       total += (price * quantity);
-      console.log(total);
+      setArrTotal(total);
     });
-    setArrTotal(total);
+    return (total);
   };
 
   function Delete(data) {

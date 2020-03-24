@@ -3,6 +3,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import firebase from '../conexion/firebase';
 import './menu.css';
 import List from './category';
+import PropTypes from 'prop-types';
 
 const Menu = ({ agregar, total }) => {
   const [array, setArray] = useState([]);
@@ -96,5 +97,9 @@ const Menu = ({ agregar, total }) => {
       </table>
     </nav>
   );
+};
+Menu.propTypes = {
+  agregar: PropTypes.func.isRequired,
+  total: PropTypes.func.isRequired,
 };
 export default Menu;
