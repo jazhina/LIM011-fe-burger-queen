@@ -24,7 +24,10 @@ function WaiterView() {
     console.log(arrayProducts);
     setArrOrder(newArrayDel);
   }
-
+  const reset = () => {
+    setArrOrder([]);
+    setArrTotal(0);
+  };
   const agregarProductoAlPedido = (obj, operacion) => {
     const newobj = {
       producto: obj.descripcion,
@@ -39,8 +42,10 @@ function WaiterView() {
       if (element.id === newobj.id) {
         if (operacion === true) {
           elementCantidad.cantidad += 1;
-        } else if (operacion === false) {
-          elementCantidad.cantidad -= 1;
+        } else if (element.cantidad >= 2) {
+          if (operacion === false) {
+            elementCantidad.cantidad -= 1;
+          }
         }
       }
       return elementCantidad;
@@ -58,7 +63,7 @@ function WaiterView() {
         <Menu agregar={agregarProductoAlPedido} total={buttonTotal} />
       </div>
       <div className="p-2 flex-fill bd-highlight">
-        <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} newtotal={arrtotal} />
+        <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} newtotal={arrtotal} reset={reset} />
       </div>
     </div>
   );

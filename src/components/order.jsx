@@ -4,9 +4,8 @@ import firebase from 'firebase';
 import AddProducts from './addProducts';
 
 function Order({
-  data, addOperation, total, eliminar, newtotal,
+  data, addOperation, total, eliminar, newtotal, reset,
 }) {
-  console.log(total);
   const [client, setclient] = useState('');
   const recorre = () => data.map((element) => (
     <AddProducts
@@ -22,11 +21,6 @@ function Order({
     console.log(valor);
     setclient(valor);
   }
-  const SendOrder = () => {
-    if (client === '') {
-      alert('Ingresar nombre del cliente');
-    }
-  };
 
   const SendKitchen = (obj) => {
     const newobj = {
@@ -41,6 +35,8 @@ function Order({
         newobj,
       });
     console.log(newobj);
+    setclient('');
+    reset();
   };
   return (
     <div>
@@ -71,17 +67,14 @@ function Order({
       <div className="container">
         <button
           type="button"
+          id="button"
           className="btn btn-primary"
           data-toggle="modal"
           data-target="#exampleModal"
-          onClick={(event) => {
-            event.preventDefault();
-            SendOrder();
-          }}
+          disabled={client === ''}
         >
           Confirmar pedido
         </button>
-
         <div className="modal fade" id="exampleModal">
           <div className="modal-dialog">
             <div className="modal-content">
@@ -99,6 +92,7 @@ function Order({
                 <button
                   type="button"
                   className="btn btn-primary"
+                  data-dismiss="modal"
                   onClick={(event) => {
                     event.preventDefault();
                     SendKitchen(data);
@@ -124,6 +118,7 @@ Order.propTypes = {
   addOperation: PropTypes.func.isRequired,
   total: PropTypes.func.isRequired,
   eliminar: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
   newtotal: PropTypes.number.isRequired,
 };
 
