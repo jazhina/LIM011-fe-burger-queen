@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import AddProducts from './addProducts';
 
 function Order({
-  data, addOperation, total, eliminar, newtotal,
+  data, addOperation, total, eliminar, newtotal, reset,
 }) {
   console.log(total);
   const [client, setclient] = useState('');
@@ -27,7 +27,6 @@ function Order({
       alert('Ingresar nombre del cliente');
     }
   };
-
   const SendKitchen = (obj) => {
     const newobj = {
       cliente: client,
@@ -41,6 +40,8 @@ function Order({
         newobj,
       });
     console.log(newobj);
+    setclient('');
+    reset();
   };
   return (
     <div>
@@ -60,24 +61,22 @@ function Order({
         <tbody>
           {recorre()}
           <tr>
-            <th COLSPAN="3">Total</th>
+            <th colSpan="3">Total</th>
             <th>S/ </th>
-            <th COLSPAN="2">
-              {newtotal}
+            <th colSpan="2">
+              {total()}
             </th>
           </tr>
         </tbody>
       </table>
       <div className="container">
+
         <button
           type="button"
           className="btn btn-primary"
           data-toggle="modal"
           data-target="#exampleModal"
-          onClick={(event) => {
-            event.preventDefault();
-            SendOrder();
-          }}
+          disabled={client === ''}
         >
           Confirmar pedido
         </button>
@@ -87,7 +86,15 @@ function Order({
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Confirmar pedido</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  onClick={(event) => {
+                    event.preventDefault();
+                  }}
+                >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -122,6 +129,8 @@ Order.propTypes = {
       cantidad: PropTypes.number.isRequired,
     }).isRequired,
   addOperation: PropTypes.func.isRequired,
+  newtotal: PropTypes.number.isRequired,
+  reset: PropTypes.func.isRequired,
   total: PropTypes.func.isRequired,
   eliminar: PropTypes.func.isRequired,
 };

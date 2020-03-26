@@ -15,6 +15,7 @@ function AddProducts({
           onClick={(event) => {
             event.preventDefault();
             addOperation(data, false);
+            total(data);
           }}
         />
       </td>
