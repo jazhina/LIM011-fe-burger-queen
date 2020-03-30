@@ -2,6 +2,7 @@
   "name": "burger-queen",
   "version": "0.1.0",
   "private": true,
+  "main": "public/index.html",
   "homepage": "https://jazhina.github.io/LIM011-fe-burger-queen",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
