@@ -16,6 +16,7 @@ function WaiterView() {
     });
     return (total);
   };
+  
   const orderReset = () => {
     setArrOrder([]);
   };
@@ -28,7 +29,10 @@ function WaiterView() {
     console.log(arrayProducts);
     setArrOrder(newArrayDel);
   }
-
+  const reset = () => {
+    setArrOrder([]);
+    setArrTotal(0);
+  };
   const agregarProductoAlPedido = (obj, operacion) => {
     const newobj = {
       producto: obj.descripcion,
@@ -48,6 +52,10 @@ function WaiterView() {
         }
         if (operacion === true) {
           elementCantidad.cantidad += 1;
+        } else if (element.cantidad >= 2) {
+          if (operacion === false) {
+            elementCantidad.cantidad -= 1;
+          }
         }
       }
       return elementCantidad;

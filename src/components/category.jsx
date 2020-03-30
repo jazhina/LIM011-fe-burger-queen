@@ -34,5 +34,6 @@ List.propTypes = {
       precio: PropTypes.number.isRequired,
     }).isRequired,
   agregar: PropTypes.func.isRequired,
+  total: PropTypes.func.isRequired,
 };
 export default List;
