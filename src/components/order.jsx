@@ -8,6 +8,7 @@ function Order({
 }) {
   console.log(total);
   const [client, setclient] = useState('');
+  // eslint-disable-next-line react/prop-types
   const recorre = () => data.map((element) => (
     <AddProducts
       data={element}
@@ -46,7 +47,7 @@ function Order({
   return (
     <div>
       <span>Nombre del cliente</span>
-      <input type="text" value={client} onChange={NameClient} />
+      <input placeholder="inserte nombre" type="text" value={client} onChange={NameClient} />
       <table className="table table-bordered table-dark">
         <thead>
           <tr>
@@ -99,7 +100,7 @@ function Order({
                 </button>
               </div>
               <div className="modal-body">
-                Enviar a cocina ...
+                Enviar a cocina
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
