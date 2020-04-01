@@ -13,7 +13,8 @@ it('Deberia pintar los productos que fueron seleccionados', () => {
     precio: '15',
   };
   const container = render(<AddProducts data={objProducto} eliminar={fnDelete} addOperation={fnCantidad} total={fnTotal} />);
-  const btnCantidad = container.getByTestId('agregar');
+  const btnCantidad = container.getByTestId('agregar', { exact: false });
+  const btnMenos = container.getByTestId('quitar');
   const listaDeNodos = container.getAllByTestId('products');
   const btnElimimar = container.getByTestId('eliminar');
 
@@ -26,10 +27,17 @@ it('Deberia pintar los productos que fueron seleccionados', () => {
   expect(getNodeText(listaDeNodos[0])).toBe('3');
   expect(getNodeText(listaDeNodos[1])).toBe('Hamburguesa doble vegetariana');
   expect(getNodeText(listaDeNodos[2])).toBe('45');
+  act(() => {
+    fireEvent.click(btnMenos, { preventDefault: () => {} });
+  });
+  expect(fnCantidad).toHaveBeenCalled();
+
+  expect(getNodeText(listaDeNodos[0])).toBe('3');
+  expect(getNodeText(listaDeNodos[1])).toBe('Hamburguesa doble vegetariana');
+  expect(getNodeText(listaDeNodos[2])).toBe('45');
 
   act(() => {
     fireEvent.click(btnElimimar, { preventDefault: () => {} });
   });
   expect(fnDelete).toHaveBeenCalled();
-
 });
