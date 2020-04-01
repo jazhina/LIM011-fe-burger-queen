@@ -59,7 +59,7 @@ AddProducts.propTypes = {
     .shape({
       cantidad: PropTypes.string.isRequired,
       producto: PropTypes.string.isRequired,
-      precio: PropTypes.number.isRequired,
+      precio: PropTypes.string.isRequired,
     }).isRequired,
   addOperation: PropTypes.func.isRequired,
   eliminar: PropTypes.func.isRequired,

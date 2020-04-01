@@ -3,7 +3,7 @@ import { render, fireEvent, getNodeText } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import Aditional from '../components/aditional';
 
-it('Deberia pintar los productos que fueron seleccionados', () => {
+it('Deberia pintar los productos adicionales que fueron seleccionados', () => {
   const fnTotal = jest.fn();
   const fnAgregar = jest.fn();
   const objProducto = {

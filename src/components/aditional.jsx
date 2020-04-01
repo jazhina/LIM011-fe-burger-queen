@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Aditional({ objeto, agregar, total }) {
-  console.log(objeto);
+/*   console.log(objeto); */
 
   return (
     <tr>
@@ -30,7 +30,7 @@ Aditional.propTypes = {
   objeto: PropTypes
     .shape({
       descripcion: PropTypes.string.isRequired,
-      precio: PropTypes.number.isRequired,
+      precio: PropTypes.string.isRequired,
     }).isRequired,
   agregar: PropTypes.func.isRequired,
   total: PropTypes.func.isRequired,
