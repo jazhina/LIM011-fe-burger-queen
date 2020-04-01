@@ -33,8 +33,8 @@ function WaiterView() {
     const newobj = {
       producto: obj.descripcion,
       precio: obj.precio,
-      id: obj.id,
       cantidad: 1,
+      id: obj.id,
     };
     const filterProducts = arrOrder.filter((element) => element.id === newobj.id);
     const newArray = arrOrder.concat([newobj]);

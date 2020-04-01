@@ -6,47 +6,52 @@ function AddProducts({
 }) {
   console.log(data);
   return (
-    <tr>
-      <td>
-        <input
-          type="image"
-          src="https://img.icons8.com/ultraviolet/40/000000/minus.png"
-          alt="Restar producto"
-          onClick={(event) => {
-            event.preventDefault();
-            addOperation(data, false);
-            total(data);
-          }}
-        />
-      </td>
-      <td>{data.cantidad}</td>
-      <td>
-        <input
-          type="image"
-          src="https://img.icons8.com/ultraviolet/40/000000/add.png"
-          alt="Añadir producto"
-          onClick={(event) => {
-            event.preventDefault();
-            addOperation(data, true);
-            total(data);
-          }}
-        />
-      </td>
-      <td>{data.producto}</td>
-      <td>{data.precio * data.cantidad}</td>
-      <td>
-        <input
-          type="image"
-          src="https://img.icons8.com/officel/40/000000/delete-sign.png"
-          alt="Eliminar producto"
-          onClick={(event) => {
-            event.preventDefault();
-            eliminar(data);
-          }}
-        />
-      </td>
+    <div>
+      <tr>
+        <td>
+          <input
+            type="image"
+            src="https://img.icons8.com/ultraviolet/40/000000/minus.png"
+            alt="Restar producto"
+            data-testid="quitar"
+            onClick={(event) => {
+              event.preventDefault();
+              addOperation(data, false);
+              total(data);
+            }}
+          />
+        </td>
+        <td data-testid="products">{data.cantidad}</td>
+        <td>
+          <input
+            type="image"
+            src="https://img.icons8.com/ultraviolet/40/000000/add.png"
+            alt="Añadir producto"
+            data-testid="agregar"
+            onClick={(event) => {
+              event.preventDefault();
+              addOperation(data, true);
+              total(data);
+            }}
+          />
+        </td>
+        <td data-testid="products">{data.producto}</td>
+        <td data-testid="products">{data.precio * data.cantidad}</td>
+        <td>
+          <input
+            type="image"
+            src="https://img.icons8.com/officel/40/000000/delete-sign.png"
+            alt="Eliminar producto"
+            data-testid="eliminar"
+            onClick={(event) => {
+              event.preventDefault();
+              eliminar(data);
+            }}
+          />
+        </td>
 
-    </tr>
+      </tr>
+    </div>
   );
 }
 
@@ -55,7 +60,6 @@ AddProducts.propTypes = {
     .shape({
       cantidad: PropTypes.number.isRequired,
       producto: PropTypes.string.isRequired,
-      descripcion: PropTypes.string.isRequired,
       precio: PropTypes.number.isRequired,
     }).isRequired,
   addOperation: PropTypes.func.isRequired,

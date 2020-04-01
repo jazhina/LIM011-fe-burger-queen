@@ -74,7 +74,6 @@ const Menu = ({ agregar, total }) => {
         onClick={(event) => {
           event.preventDefault();
           ChangeCategory('hamburguesa');
-
         }}
       >
         Hamburguesa
