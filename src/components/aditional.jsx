@@ -6,13 +6,14 @@ function Aditional({ objeto, agregar, total }) {
 
   return (
     <tr>
-      <td>{objeto.descripcion}</td>
-      <td>{objeto.precio}</td>
+      <td data-testid="items">{objeto.descripcion}</td>
+      <td data-testid="items">{objeto.precio}</td>
       <td>
         <input
           type="image"
           src="https://img.icons8.com/ultraviolet/40/000000/add.png"
           alt="Añadir producto"
+          data-testid="agregar"
           onClick={(event) => {
             event.preventDefault();
             console.log(objeto);
