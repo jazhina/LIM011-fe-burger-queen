@@ -6,7 +6,6 @@ import './menu.css';
 import List from './category';
 import Aditional from './aditional';
 
-
 const Menu = ({ agregar, total }) => {
   const [array, setArray] = useState([]);
   const [arrayAditio, setAditio] = useState([]);
@@ -28,6 +27,7 @@ const Menu = ({ agregar, total }) => {
       };
       return obj;
     });
+    /* setArray(save.filter((products) => products.categoria === categoria)); */
     if (categoria === 'adicional') {
       setAditio(save.filter((products) => products.categoria === 'adicional'));
     } if (categoria !== 'adicional') {

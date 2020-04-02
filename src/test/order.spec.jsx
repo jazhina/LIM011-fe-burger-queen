@@ -11,13 +11,12 @@ describe('Order', () => {
     const fnEliminar = jest.fn();
     const fnNewTotal = jest.fn();
     const fnReset = jest.fn();
-    const fnenviar = jest.fn();
+    const fnEnviar = jest.fn();
     const container = render(<Order data={fnData} addOperation={fnAddOperation} total={fnTotal} eliminar={fnEliminar} newtotal={fnNewTotal} reset={fnReset} />);
     const input = container.getByTestId('input');
     /*     const tabla = container.getByTestId('mostrarTabla');
     const btnconfirmar = container.getByTestId('confirmarpedido'); */
     const btnenviar = container.getByTestId('enviarcocina');
-
     act(() => {
       fireEvent.click(input, { target: { value: 'Hola' } });
     });
@@ -25,7 +24,7 @@ describe('Order', () => {
     act(() => {
       fireEvent.click(btnenviar, { preventDefault: () => {} });
     });
-    expect(fnenviar).toHaveBeenCalled();
+    expect(fnEnviar).toHaveBeenCalled();
     expect(input.value).toBe('');
   });
 });

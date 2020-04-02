@@ -13,7 +13,7 @@ it('Deberia pintar los productos que fueron seleccionados', () => {
     precio: '15',
   };
   const container = render(<AddProducts data={objProducto} eliminar={fnDelete} addOperation={fnCantidad} total={fnTotal} />);
-  const btnCantidad = container.getByTestId('agregar', { exact: false });
+  const btnCantidad = container.getByTestId('agregar');
   const btnMenos = container.getByTestId('quitar');
   const listaDeNodos = container.getAllByTestId('products');
   const btnElimimar = container.getByTestId('eliminar');

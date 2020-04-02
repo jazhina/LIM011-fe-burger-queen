@@ -7,9 +7,9 @@ function Order({
   data, addOperation, total, eliminar, newtotal, reset,
 }) {
   const [client, setclient] = useState('');
-  const recorre = () => data.map((element) => (
+  const recorre = () => Object.keys(data).map((element) => (
     <AddProducts
-      data={element}
+      data={data[element]}
       addOperation={addOperation}
       total={total}
       eliminar={eliminar}
@@ -41,8 +41,8 @@ function Order({
   return (
     <div>
       <span>Nombre del cliente</span>
-      <input placeholder="inserte nombre" type="text" value={client} onChange={NameClient} />
-      <table className="table table-bordered table-dark">
+      <input data-testid="input" type="text" value={client} onChange={NameClient} />
+      <table data-testid="mostrarTabla" className="table table-bordered table-dark">
         <thead>
           <tr>
             <th scope="col">-</th>
@@ -72,6 +72,7 @@ function Order({
           className="btn btn-primary"
           data-toggle="modal"
           data-target="#exampleModal"
+          data-testid="confirmarpedido"
           disabled={client === ''}
         >
           Confirmar pedido
@@ -102,6 +103,7 @@ function Order({
                   type="button"
                   className="btn btn-primary"
                   data-dismiss="modal"
+                  data-testid="enviarcocina"
                   onClick={(event) => {
                     event.preventDefault();
                     SendKitchen(data);

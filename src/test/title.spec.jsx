@@ -6,6 +6,6 @@ describe('Title', () => {
   it('Debería mostrar el logo y el titulo de la aplicacion', () => {
     const container = render(<Title />);
     const eleLogo = container.getByTestId('logo');
-    expect(eleLogo).toBeInTheDocument();
+    expect(eleLogo).toBeTruthy();
   });
 });
