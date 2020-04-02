@@ -19,7 +19,7 @@ describe('Order', () => {
     const btnenviar = container.getByTestId('enviarcocina');
 
     act(() => {
-      fireEvent.click(input, { target: { value: 'Carlos' } });
+      fireEvent.change(input, { target: { value: 'Carlos' } });
     });
 
     expect(input.value).toBe('Carlos');
@@ -32,7 +32,7 @@ describe('Order', () => {
       fireEvent.click(btnenviar, { preventDefault: () => {} });
     });
     act(() => {
-      fireEvent.click(input, { target: { value: '' } });
+      fireEvent.change(input, { target: { value: '' } });
     });
     expect(input.value).toBe('');
   });
