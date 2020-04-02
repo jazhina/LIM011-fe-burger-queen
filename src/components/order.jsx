@@ -34,7 +34,7 @@ function Order({
       .add({
         newobj,
       });
-    console.log(newobj);
+    /*     console.log(newobj); */
     setclient('');
     reset();
   };
@@ -76,7 +76,7 @@ function Order({
         >
           Confirmar pedido
         </button>
-        <div className="modal fade" id="exampleModal">
+        <div className="modal fade" id="exampleModal" data-testid="modal">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -87,6 +87,16 @@ function Order({
               </div>
               <div className="modal-body">
                 Enviar a cocina ...
+                <tbody>
+                  {recorre()}
+                  <tr>
+                    <th COLSPAN="3">Total</th>
+                    <th>S/ </th>
+                    <th COLSPAN="2">
+                      {total()}
+                    </th>
+                  </tr>
+                </tbody>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>

@@ -7,4 +7,3 @@ export default firebasemock.MockFirebaseSdk(
   () => null,
   () => mockfirestore,
 );
-
