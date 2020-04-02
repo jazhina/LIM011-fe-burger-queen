@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 // import Order from './order';
 // import { useCollection } from 'react-firebase-hooks/firestore';
 
-function List({ objeto, agregar, total }) {
+function List({
+  objeto, agregar, total,
+}) {
   return (
     <tr>
       <td data-testid="items">{objeto.descripcion}</td>

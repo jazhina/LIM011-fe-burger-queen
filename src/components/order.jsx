@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import AddProducts from './addProducts';
-import SummaryOrder from './summaryOrder';
+import ResumeOrder from './ResumeOrder';
 
 function Order({
   data, addOperation, total, eliminar, newtotal, reset,
@@ -17,12 +17,11 @@ function Order({
     />
   ));
   const containerModal = () => Object.keys(data).map((element) => (
-    <SummaryOrder
+    <ResumeOrder
       data={data[element]}
     />
   ));
   function NameClient(event) {
-    // event.preventDefault();
     const valor = event.target.value;
     console.log(valor);
     setclient(valor);
@@ -71,6 +70,7 @@ function Order({
         </tbody>
       </table>
       <div className="container">
+
         <button
           type="button"
           id="button"
@@ -146,10 +146,10 @@ Order.propTypes = {
       cantidad: PropTypes.number.isRequired,
     }).isRequired,
   addOperation: PropTypes.func.isRequired,
+  newtotal: PropTypes.number.isRequired,
+  reset: PropTypes.func.isRequired,
   total: PropTypes.func.isRequired,
   eliminar: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-  newtotal: PropTypes.number.isRequired,
 };
 
 export default Order;

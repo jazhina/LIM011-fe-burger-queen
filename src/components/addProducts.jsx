@@ -50,7 +50,7 @@ function AddProducts({
         />
       </td>
 
-    </tr>
+      </tr>
   );
 }
 

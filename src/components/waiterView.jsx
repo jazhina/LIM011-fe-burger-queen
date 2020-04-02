@@ -5,6 +5,7 @@ import Order from './order';
 function WaiterView() {
   const [arrOrder, setArrOrder] = useState([]);
   const [arrtotal, setArrTotal] = useState(0);
+
   const buttonTotal = () => {
     let total = 0;
     arrOrder.forEach((element) => {
@@ -14,6 +15,10 @@ function WaiterView() {
       setArrTotal(total);
     });
     return (total);
+  };
+
+  const orderReset = () => {
+    setArrOrder([]);
   };
 
   function Delete(data) {
@@ -32,14 +37,19 @@ function WaiterView() {
     const newobj = {
       producto: obj.descripcion,
       precio: obj.precio,
-      id: obj.id,
       cantidad: 1,
+      id: obj.id,
     };
     const filterProducts = arrOrder.filter((element) => element.id === newobj.id);
     const newArray = arrOrder.concat([newobj]);
     const mapProducts = arrOrder.map((element) => {
       const elementCantidad = element;
       if (element.id === newobj.id) {
+        if (element.cantidad >= 1) {
+          if (operacion === false) {
+            elementCantidad.cantidad -= 1;
+          }
+        }
         if (operacion === true) {
           elementCantidad.cantidad += 1;
         } else if (element.cantidad >= 2) {
@@ -50,7 +60,6 @@ function WaiterView() {
       }
       return elementCantidad;
     });
-
     if (filterProducts.length === 0) {
       setArrOrder(newArray);
     } else {
@@ -63,7 +72,7 @@ function WaiterView() {
         <Menu agregar={agregarProductoAlPedido} total={buttonTotal} />
       </div>
       <div className="p-2 flex-fill bd-highlight">
-        <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} newtotal={arrtotal} reset={reset} />
+        <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} newtotal={arrtotal} reset={orderReset} />
       </div>
     </div>
   );

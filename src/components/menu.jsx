@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import PropTypes from 'prop-types';
 import firebase from '../conexion/firebase';
 import './menu.css';
 import List from './category';
 import Aditional from './aditional';
-import PropTypes from 'prop-types';
 
 const Menu = ({ agregar, total }) => {
   const [array, setArray] = useState([]);
