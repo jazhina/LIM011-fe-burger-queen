@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import AddProducts from './addProducts';
+import ResumeOrder from './ResumeOrder';
 
 function Order({
   data, addOperation, total, eliminar, newtotal, reset,
@@ -15,8 +16,12 @@ function Order({
       eliminar={eliminar}
     />
   ));
+  const containerModal = () => Object.keys(data).map((element) => (
+    <ResumeOrder
+      data={data[element]}
+    />
+  ));
   function NameClient(event) {
-    // event.preventDefault();
     const valor = event.target.value;
     console.log(valor);
     setclient(valor);
@@ -81,31 +86,35 @@ function Order({
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Confirmar pedido</h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  onClick={(event) => {
-                    event.preventDefault();
-                  }}
-                >
+                <h4 className="modal-title">Resumen pedido</h4>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
-                Enviar a cocina ...
-                <tbody>
-                  {recorre()}
-                  <tr>
-                    <th COLSPAN="3">Total</th>
-                    <th>S/ </th>
-                    <th COLSPAN="2">
-                      {total()}
-                    </th>
-                  </tr>
-                </tbody>
+                <h5>
+                  Cliente:
+                  {' '}
+                  {client}
+                </h5>
+                <table className="table">
+                  <thead className="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Productos</th>
+                      <th scope="col">Precio</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {containerModal()}
+                    <tr>
+                      <th colSpan="2">Total</th>
+                      <th>
+                        {total()}
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
