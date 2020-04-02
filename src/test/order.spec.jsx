@@ -14,8 +14,8 @@ describe('Order', () => {
     const fnEnviar = jest.fn();
     const container = render(<Order data={fnData} addOperation={fnAddOperation} total={fnTotal} eliminar={fnEliminar} newtotal={fnNewTotal} reset={fnReset} />);
     const input = container.getByTestId('input');
-    /*     const tabla = container.getByTestId('mostrarTabla');
-    const btnconfirmar = container.getByTestId('confirmarpedido'); */
+    /* const tabla = container.getByTestId('mostrarTabla');
+const btnconfirmar = container.getByTestId('confirmarpedido'); */
     const btnenviar = container.getByTestId('enviarcocina');
     act(() => {
       fireEvent.click(input, { target: { value: 'Hola' } });
