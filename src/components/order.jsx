@@ -7,7 +7,6 @@ function Order({
   data, addOperation, total, eliminar, newtotal, reset,
 }) {
   const [client, setclient] = useState('');
-  // eslint-disable-next-line react/prop-types
   const recorre = () => data.map((element) => (
     <AddProducts
       data={element}
