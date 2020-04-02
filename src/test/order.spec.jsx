@@ -32,7 +32,7 @@ describe('Order', () => {
       fireEvent.click(btnenviar, { preventDefault: () => {} });
     });
     act(() => {
-      fireEvent.click(input, { target: { value: '' } });
+      fireEvent.change(input, { target: { value: '' } });
     });
     expect(input.value).toBe('');
   });
