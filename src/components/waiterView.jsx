@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Menu from './menu';
 import Order from './order';
+import Title from './title';
 
 function WaiterView() {
   const [arrOrder, setArrOrder] = useState([]);
@@ -29,6 +30,7 @@ function WaiterView() {
     console.log(arrayProducts);
     setArrOrder(newArrayDel);
   }
+  // eslint-disable-next-line no-unused-vars
   const reset = () => {
     setArrOrder([]);
     setArrTotal(0);
@@ -67,14 +69,17 @@ function WaiterView() {
     }
   };
   return (
-    <div className="d-flex bd-highlight" data-testid="containerWaiterView">
-      <div className="p-2 flex-fill bd-highlight">
-        <Menu agregar={agregarProductoAlPedido} total={buttonTotal} />
+    <main>
+      <Title />
+      <div className="d-flex bd-highlight" data-testid="containerWaiterView">
+        <div className="p-2 flex-fill bd-highlight">
+          <Menu agregar={agregarProductoAlPedido} total={buttonTotal} />
+        </div>
+        <div className="p-2 flex-fill bd-highlight">
+          <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} newtotal={arrtotal} reset={orderReset} />
+        </div>
       </div>
-      <div className="p-2 flex-fill bd-highlight">
-        <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} newtotal={arrtotal} reset={orderReset} />
-      </div>
-    </div>
+    </main>
   );
 }
 
