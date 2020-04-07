@@ -1,13 +1,13 @@
 import React from 'react';
 // import logo from './logo.svg';
-import Title from './components/title';
-import WaiterView from './components/waiterView';
+/* import WaiterView from './view/waiterView';
+import KitchenView from './view/KitchenView'; */
+import Routes from './Route';
 
 function App() {
   return (
     <div>
-      <Title />
-      <WaiterView />
+      <Routes />
     </div>
   );
 }

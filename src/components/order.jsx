@@ -33,6 +33,7 @@ function Order({
       order: obj,
       total: newtotal,
       fecha: new Date(),
+      estado: '',
     };
     firebase.firestore()
       .collection('orders')
