@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import WaiterView from '../components/waiterView';
+import WaiterView from '../view/waiterView';
 
 it('Mostrar los componentes Menu y Orden', () => {
   const container = render(<WaiterView />);

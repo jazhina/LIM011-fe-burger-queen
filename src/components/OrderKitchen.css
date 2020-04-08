@@ -1,0 +1,33 @@
+.card{
+    width: 18rem;
+    margin-top: 20px;
+    flex-direction: column;
+}
+.card-header{
+    margin-top: -30px;
+    height: 40px;
+    box-shadow: 1px 5px 15px #ffffff;
+    background: #16222A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.card-section:hover{
+    box-shadow: 1px 1px 20px #000000;
+}
+.name-client{
+    color: #ffffff;
+}
+.title-viewKitchen{
+    color: #ffffff;
+}
+.view{
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    
+    
+    
+    height: 100vh;
+}
