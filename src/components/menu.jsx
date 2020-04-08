@@ -63,6 +63,7 @@ const Menu = ({ agregar, total }) => {
       <button
         type="button"
         className="Desayuno btn btn-info"
+        data-testid="desayuno"
         onClick={(event) => {
           event.preventDefault();
           ChangeCategory('desayuno');
