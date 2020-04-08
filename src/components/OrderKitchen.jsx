@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import firebase from '../conexion/firebase';
 import AddNotes from './addNotes';
 import './OrderKitchen.css';
 
 const OrderKitchen = () => {
   const [kitchen, setKitchen] = useState([]);
-  const [value, loading, error] = useCollection(
+  const [value, loading, error] = useCollectionData(
     firebase.firestore().collection('orders').orderBy('newobj.fecha', 'asc'),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     },
   );
   const dataOrder = () => {
-    const data = value.docs.map((element) => {
+    const data = value.map((element) => {
+      const date = element.newobj.fecha.toDate().toString();
       const obj = {
-        cliente: element.data().newobj.cliente,
-        estado: element.data().newobj.estado,
-        fecha: element.data().newobj.fecha.toDate(),
-        order: element.data().newobj.order.map((elemt) => {
+        ID: element.ID,
+        cliente: element.newobj.cliente,
+        fecha: date.substring(0, date.indexOf('GMT')),
+        order: element.newobj.order.map((elemt) => {
           const detalle = {
             cantidad: elemt.cantidad,
             producto: elemt.producto,
@@ -49,10 +50,8 @@ const OrderKitchen = () => {
       </header>
       <main>
         <ul>
-          {ListNotes()}
-
+          <ListNotes />
         </ul>
-
       </main>
       <button
         type="button"

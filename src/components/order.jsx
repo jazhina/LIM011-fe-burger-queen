@@ -33,12 +33,19 @@ function Order({
       order: obj,
       total: newtotal,
       fecha: new Date(),
-      estado: '',
     };
     firebase.firestore()
       .collection('orders')
       .add({
         newobj,
+      }).then((objeto) => {
+        console.log(objeto.id);
+        firebase.firestore()
+          .collection('orders').doc(objeto.id).update({
+            ID: objeto.id,
+            estado: '',
+            Tiempo_Espera: '',
+          });
       });
     /*     console.log(newobj); */
     setclient('');
