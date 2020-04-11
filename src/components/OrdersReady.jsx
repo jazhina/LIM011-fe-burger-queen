@@ -2,22 +2,25 @@ import React, { useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { Link } from 'react-router-dom';
 import firebase from '../conexion/firebase';
-import AddNotes from './addNotes';
+import AddListReady from './AddListReady';
+
 import './OrderKitchen.css';
 
-const OrderKitchen = () => {
-  const [kitchen, setKitchen] = useState([]);
+const OrdersReady = () => {
+  const [ready, setReady] = useState([]);
   const [value, loading, error] = useCollectionData(
     firebase.firestore().collection('orders').orderBy('newobj.fecha', 'asc'),
   );
-  const dataOrder = () => {
-    const filterData = value.filter((ele) => ele.estado === '');
-    const dataKitchen = filterData.map((element) => {
+  const showOrdersReady = () => {
+    const filterData = value.filter((ele) => ele.estado === 'Listo');
+    const dataOrder = filterData.map((element) => {
       const date = element.newobj.fecha.toDate().toString();
       const obj = {
         ID: element.ID,
         cliente: element.newobj.cliente,
+        estado: element.estado,
         fecha: date.substring(0, date.indexOf('GMT')),
+        tiempo_espera: element.tiempo_espera,
         order: element.newobj.order.map((elemt) => {
           const detalle = {
             cantidad: elemt.cantidad,
@@ -28,29 +31,28 @@ const OrderKitchen = () => {
       };
       return obj;
     });
-    setKitchen(dataKitchen);
-    console.log(JSON.stringify(kitchen));
+    setReady(dataOrder);
   };
-  function ListNotes() {
+  function listReady() {
     if (loading) {
       return 'Cargando...';
     }
     if (error) {
       return 'Hubo un error';
     }
-    return kitchen
-      .map((element) => <AddNotes key={element.id} objeto={element} />);
+    return ready
+      .map((element) => <AddListReady key={element.id} objeto={element} />);
   }
   return (
     <section className="view">
-      <header className="text-center  d-flex justify-content-center">
-        <h2 className="title-viewKitchen"> Órdenes en espera... </h2>
+      <header className="ReadysHeader">
+        <h2> Pedidos Listos</h2>
         <button
           type="button"
           className="btn btn-dark"
           onClick={(event) => {
             event.preventDefault();
-            dataOrder();
+            showOrdersReady();
           }}
         >
           Orden
@@ -58,19 +60,17 @@ const OrderKitchen = () => {
         <Link to="/WaiterView">
           <img alt="return" src="https://img.icons8.com/ios/50/000000/left2.png" />
         </Link>
+
       </header>
-      <div className="row">
-        <div className="row">
-          <div className="col-sm-12">
-            <div className="card-columns">
-              <ul>
-                {ListNotes()}
-              </ul>
-            </div>
-          </div>
-        </div>
+      <div className="card-columns">
+        <blockquote className="blockquote mb-0 card-body">
+          <main>
+            {listReady()}
+
+          </main>
+        </blockquote>
       </div>
     </section>
   );
 };
-export default OrderKitchen;
+export default OrdersReady;
