@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './OrderKitchen.css';
 import firebase from 'firebase';
-import Detailkitchen from './detailkitchen';
+import DetailKitchen from './detailKitchen';
 // import PropTypes from 'prop-types';
 
 function AddNotes({ objeto }) {
@@ -32,7 +32,7 @@ function AddNotes({ objeto }) {
     setTime(calculateSeconds);
     firebase.firestore().collection('orders').doc(ID).update({
       estado: 'Listo',
-      Tiempo_Espera: calculateSeconds,
+      tiempo_espera: calculateSeconds,
     });
   };
 
@@ -56,7 +56,7 @@ function AddNotes({ objeto }) {
                 Orden:
                 {' '}
                 {order
-                  .map((element) => <Detailkitchen key={element.id} detail={element} />)}
+                  .map((element) => <DetailKitchen key={element.id} detail={element} />)}
               </li>
               <li>
                 Fecha:

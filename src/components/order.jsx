@@ -44,7 +44,7 @@ function Order({
           .collection('orders').doc(objeto.id).update({
             ID: objeto.id,
             estado: '',
-            Tiempo_Espera: '',
+            tiempo_espera: '',
           });
       });
     /*     console.log(newobj); */
