@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function AddProducts({
   data, addOperation, total, eliminar,
 }) {
-  console.log(data);
+  // console.log(data);
   return (
     <tr>
       <td>

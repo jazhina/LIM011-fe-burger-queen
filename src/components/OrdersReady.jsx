@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { Link } from 'react-router-dom';
+import { HashRouter, Link } from 'react-router-dom';
 import firebase from '../conexion/firebase';
 import AddListReady from './AddListReady';
 
@@ -8,7 +8,7 @@ import './OrderKitchen.css';
 
 const OrdersReady = () => {
   const [ready, setReady] = useState([]);
-  const [value, loading, error] = useCollectionData(
+  const [value, loading] = useCollectionData(
     firebase.firestore().collection('orders').orderBy('newobj.fecha', 'asc'),
   );
   const showOrdersReady = () => {
@@ -37,40 +37,42 @@ const OrdersReady = () => {
     if (loading) {
       return 'Cargando...';
     }
-    if (error) {
-      return 'Hubo un error';
-    }
     return ready
       .map((element) => <AddListReady key={element.id} objeto={element} />);
   }
   return (
-    <section className="view">
-      <header className="ReadysHeader">
-        <h2> Pedidos Listos</h2>
-        <button
-          type="button"
-          className="btn btn-dark"
-          onClick={(event) => {
-            event.preventDefault();
-            showOrdersReady();
-          }}
-        >
-          Orden
-        </button>
-        <Link to="/WaiterView">
-          <img alt="return" src="https://img.icons8.com/ios/50/000000/left2.png" />
-        </Link>
+    <HashRouter>
+      <section data-testid="containerOrdersReady" className="view">
+        <div className="badge badge-light">
+          <header className="ReadysHeader">
+            <h2> Pedidos Listos</h2>
+          </header>
+          <nav>
+            <button
+              type="button"
+              className="btn btn-dark"
+              onClick={(event) => {
+                event.preventDefault();
+                showOrdersReady();
+              }}
+            >
+              Orden
+            </button>
+            <Link to="/WaiterView">
+              <img alt="return" src="https://img.icons8.com/ios/50/000000/left2.png" />
+            </Link>
+          </nav>
+        </div>
+        <div className="card-columns">
+          <blockquote className="blockquote mb-0 card-body">
+            <main>
+              {listReady()}
 
-      </header>
-      <div className="card-columns">
-        <blockquote className="blockquote mb-0 card-body">
-          <main>
-            {listReady()}
-
-          </main>
-        </blockquote>
-      </div>
-    </section>
+            </main>
+          </blockquote>
+        </div>
+      </section>
+    </HashRouter>
   );
 };
 export default OrdersReady;

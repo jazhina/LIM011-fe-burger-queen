@@ -1,13 +1,12 @@
 import React from 'react';
 
 function Detailkitchen({ detail }) {
-  const { cantidad, producto } = detail;
   return (
-    <ul>
+    <ul data-testid="itemsKitchen">
       <li>
-        {cantidad}
+        {detail.cantidad}
         {' '}
-        {producto}
+        {detail.producto}
       </li>
     </ul>
   );

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { HashRouter, Link } from 'react-router-dom';
 import Logo from './cheeseburger.svg';
 import './title.css';
 
 const Title = () => (
-  <div data-testid="logo">
-    <header className="Header border border-dark d-flex p-2 bd-highlight">
+  <HashRouter>
+
+    <header data-testid="logo" className="Header border border-dark d-flex p-2 bd-highlight">
       <h1 className=" d-inline-flex p-2 bd-highlight">BURGER QUEEN</h1>
       <img src={Logo} className="App-logo" alt="logo" />
       <nav>
@@ -19,7 +20,7 @@ const Title = () => (
       </nav>
 
     </header>
-  </div>
+  </HashRouter>
 );
 
 export default Title;

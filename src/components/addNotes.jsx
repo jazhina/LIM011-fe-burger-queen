@@ -55,8 +55,8 @@ function AddNotes({ objeto }) {
               <li>
                 Orden:
                 {' '}
-                {order
-                  .map((element) => <DetailKitchen key={element.id} detail={element} />)}
+                {Object.keys(order)
+                  .map((element) => <DetailKitchen key={element.id} detail={order[element]} />)}
               </li>
               <li>
                 Fecha:
