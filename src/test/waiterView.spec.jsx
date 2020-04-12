@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 import WaiterView from '../view/waiterView';
 
 describe('WaiterView', () => {
-  it('Deberia mostrar el logo y la imagen de la Aplicacion', () => {
-    const title = () => <h1>BURGUER QUEEN</h1>;
-    const { debug } = render(<WaiterView />);
-    debug();
+  it('Mostrar los componentes Menu y Orden', () => {
+    const container = render(<WaiterView />);
+    const mostrar = container.getByTestId('containerWaiterView');
+    expect(mostrar).toBeTruthy();
   });
 });

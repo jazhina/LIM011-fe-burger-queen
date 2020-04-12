@@ -3,10 +3,6 @@ import DetailReady from './DetailReady';
 
 function AddListReady({ objeto }) {
   const {cliente, estado, fecha, order} = objeto;
-
-  function sendData(){
-
-  }
   return (
     <section data-testid="addListReady">
       <div className="card waiter p-3">

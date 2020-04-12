@@ -2,7 +2,7 @@ import React from 'react';
 
 function Detailkitchen({ detailReady }) {
   return (
-    <section>
+    <section data-testid="itemsReady">
       <li>
         {detailReady.cantidad}
         {' '}

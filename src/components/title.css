@@ -13,7 +13,7 @@
     color: #fff;
     font-family: 'Libre Franklin', sans-serif;
   }
-  .viewWaiter{
+  body{
     background: #efefbb; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #efefbb, #d4d3dd); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #efefbb, #d4d3dd); 
