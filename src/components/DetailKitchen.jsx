@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 function Detailkitchen({ detail }) {
   return (
@@ -11,5 +13,12 @@ function Detailkitchen({ detail }) {
     </ul>
   );
 }
+Detailkitchen.propTypes = {
+  detail: PropTypes
+    .shape({
+      cantidad: PropTypes.string.isRequired,
+      producto: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default Detailkitchen;

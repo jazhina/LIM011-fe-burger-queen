@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './OrderKitchen.css';
 import firebase from 'firebase';
-import DetailKitchen from './detailKitchen';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import DetailKitchen from './DetailKitchen';
 
 function AddNotes({ objeto }) {
   const {
@@ -38,43 +38,48 @@ function AddNotes({ objeto }) {
 
   return (
     <section>
-      <div className="container">
-        <div className="row" />
-        <div className="col-lg-4" />
-        <div className="card">
-          <div className="card-section border rounded p-3">
-            <div className="card-header">
-              <p className="name-client">
-                Cliente:
-                {' '}
-                {cliente}
-              </p>
+      <div className="card waiter p-3 border border-dark readyCard">
+        <div className="card-header border border-dark ">
+          <p className="name-client">
+            Cliente:
+            {' '}
+            {cliente}
+          </p>
 
-            </div>
-            <div className="card-body">
-              <li>
-                Orden:
-                {' '}
-                {Object.keys(order)
-                  .map((element) => <DetailKitchen key={element.id} detail={order[element]} />)}
-              </li>
-              <li>
-                Fecha:
-                {' '}
-                {fecha}
-              </li>
-              <hr />
-              <input type="checkbox" onChange={calculateTimeOrder} />
-              <span> Listo </span>
-              <span>
-                <p>Tiempo de espera: </p>
-                <p>{time}</p>
-              </span>
-            </div>
-          </div>
+        </div>
+        <div className="card-body">
+          <li>
+            Orden:
+            {' '}
+            {Object.keys(order)
+              .map((element) => <DetailKitchen key={element.id} detail={order[element]} />)}
+          </li>
+          <li>
+            Fecha:
+            {' '}
+            {fecha}
+          </li>
+          <hr className="hr" />
+          <footer className="">
+            <input type="checkbox" onChange={calculateTimeOrder} />
+            <span> Listo </span>
+            <span>
+              <p>Tiempo de espera: </p>
+              <p>{time}</p>
+            </span>
+          </footer>
         </div>
       </div>
     </section>
   );
 }
+AddNotes.propTypes = {
+  objeto: PropTypes
+    .shape({
+      cliente: PropTypes.string.isRequired,
+      fecha: PropTypes.number.isRequired,
+      order: PropTypes.string.isRequired,
+      ID: PropTypes.string.isRequired,
+    }).isRequired,
+};
 export default AddNotes;

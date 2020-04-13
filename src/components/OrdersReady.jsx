@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import React, { useState } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { HashRouter, Link } from 'react-router-dom';
@@ -43,25 +44,25 @@ const OrdersReady = () => {
   return (
     <HashRouter>
       <section data-testid="containerOrdersReady" className="view">
-        <div className="badge badge-light">
+        <div className="d-flex p-2 badge badge-light  border border-light">
           <header className="ReadysHeader">
-            <h2> Pedidos Listos</h2>
+            <h2 className="title d-inline-flex p-2 bd-highlight"> Pedidos Listos</h2>
+            <nav className="navReady">
+              <button
+                type="button"
+                className="btn btn-outline-info buttonReady"
+                onClick={(event) => {
+                  event.preventDefault();
+                  showOrdersReady();
+                }}
+              >
+                Orden
+              </button>
+              <Link to="/WaiterView">
+                <img type="button" className="btn-outline-info buttonReady " alt="return" src="https://img.icons8.com/ios/50/000000/left2.png" />
+              </Link>
+            </nav>
           </header>
-          <nav>
-            <button
-              type="button"
-              className="btn btn-dark"
-              onClick={(event) => {
-                event.preventDefault();
-                showOrdersReady();
-              }}
-            >
-              Orden
-            </button>
-            <Link to="/WaiterView">
-              <img alt="return" src="https://img.icons8.com/ios/50/000000/left2.png" />
-            </Link>
-          </nav>
         </div>
         <div className="card-columns">
           <blockquote className="blockquote mb-0 card-body">

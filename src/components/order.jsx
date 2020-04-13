@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
-import AddProducts from './addProducts';
+import AddProducts from './AddProducts';
 import ResumeOrder from './ResumeOrder';
 
 function Order({
@@ -23,7 +23,7 @@ function Order({
   ));
   function NameClient(event) {
     const valor = event.target.value;
-    console.log(valor);
+    // console.log(valor);
     setclient(valor);
   }
 
@@ -39,7 +39,7 @@ function Order({
       .add({
         newobj,
       }).then((objeto) => {
-        console.log(objeto.id);
+        // console.log(objeto.id);
         firebase.firestore()
           .collection('orders').doc(objeto.id).update({
             ID: objeto.id,
@@ -82,7 +82,7 @@ function Order({
         <button
           type="button"
           id="button"
-          className="btn btn-primary"
+          className="btn btn-secondary"
           data-toggle="modal"
           data-target="#exampleModal"
           data-testid="confirmarpedido"

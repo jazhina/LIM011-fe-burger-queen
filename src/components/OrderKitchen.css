@@ -5,9 +5,8 @@
     margin-top: -30px;
     height: 40px;
     box-shadow: 1px 5px 15px #ffffff;
-    background: #16222A;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #17a2b8;
+    border-color: #17a2b8;
 
 }
 .card-section:hover, .waiter:hover {
@@ -26,7 +25,34 @@
       margin: 0 auto;
       justify-content: center;
 }
+header{
+          margin: 0 auto;
+          justify-content: center;
+}
+.hr{
+    background-color: #3A6073;
+}
+.navReady{
+    margin-right: 250px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.buttonReady{
+    margin: 10px;
+}
+
+.title{
+    color: #ffffff;
+    text-shadow: 4px 4px 4px #17a2b8;
+    font-size: 40px;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 2px;
+}
 .badge{
-        font-size: 40px;
-        text-shadow: 2px 2px 2px #3A6073;
+    font-size: 40px;
+    margin-bottom: 30px;
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }

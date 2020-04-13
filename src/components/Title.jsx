@@ -12,8 +12,8 @@ const Title = () => (
       <nav>
         <ul>
           <li>
-            <Link type="button" className="btn btn-outline-dark" to="/KitchenView"> Orden Cocina</Link>
-            <Link type="button" className="btn btn-outline-dark" to="/ReadyOrdersView"> Pedidos Listos</Link>
+            <Link type="button" className="navTitle btn btn-dark" to="/KitchenView"> Orden Cocina</Link>
+            <Link type="button" className="navTitle btn btn-dark" to="/ReadyOrdersView"> Pedidos Listos</Link>
 
           </li>
         </ul>

@@ -1,12 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DetailReady from './DetailReady';
 
+
 function AddListReady({ objeto }) {
-  const {cliente, estado, fecha, order} = objeto;
+  const {
+    cliente, estado, fecha, order,
+  } = objeto;
   return (
     <section data-testid="addListReady">
-      <div className="card waiter p-3">
-        <div className="card-header">
+      <div className="card waiter p-3 border border-dark readyCard">
+        <div className="card-header border border-dark ">
           <p data-testid="readyItem" className="name-client">
             Cliente:
             {' '}
@@ -29,8 +33,8 @@ function AddListReady({ objeto }) {
           </div>
 
         </div>
-        <hr />
-        <footer className="">
+        <hr className="hr" />
+        <footer className="footerReady">
           <ul>
             Detalle:
             {' '}
@@ -42,6 +46,15 @@ function AddListReady({ objeto }) {
     </section>
   );
 }
+AddListReady.propTypes = {
+  objeto: PropTypes
+    .shape({
+      cliente: PropTypes.string.isRequired,
+      estado: PropTypes.string.isRequired,
+      fecha: PropTypes.number.isRequired,
+      order: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 
 export default AddListReady;
