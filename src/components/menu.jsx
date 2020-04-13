@@ -24,6 +24,7 @@ const Menu = ({ agregar, total }) => {
         descripcion: element.data().item,
         precio: element.data().precio,
         id: element.id,
+        img: element.img,
       };
       return obj;
     });
@@ -104,6 +105,7 @@ const Menu = ({ agregar, total }) => {
       <table className="table table-striped">
         <thead className="tabla-orden">
           <tr>
+            <th scope="col">Imagen</th>
             <th scope="col">Producto</th>
             <th scope="col">Precio</th>
             <th scope="col">Agregar</th>

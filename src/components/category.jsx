@@ -8,6 +8,7 @@ function List({
 }) {
   return (
     <tr>
+      <img src={objeto.img} heigth="100px" width="100px" className="card-img img" alt="producto" />
       <td data-testid="items">{objeto.descripcion}</td>
       <td data-testid="items">{objeto.precio}</td>
       <td>
