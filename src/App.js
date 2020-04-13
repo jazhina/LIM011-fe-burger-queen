@@ -1,14 +1,17 @@
 import React from 'react';
+import { HashRouter } from 'react-router-dom';
 // import logo from './logo.svg';
-import Titulo from './components/title';
-import WaiterView from './components/waiterView';
+/* import WaiterView from './view/waiterView';
+import KitchenView from './view/KitchenView'; */
+import Routes from './Routes';
 
 function App() {
   return (
-    <div>
-      <Titulo />
-      <WaiterView />
-    </div>
+    <HashRouter>
+      <div>
+        <Routes />
+      </div>
+    </HashRouter>
   );
 }
 export default App;

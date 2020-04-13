@@ -9,12 +9,20 @@
     height: 100%;
     pointer-events: none;
   }
+  .navTitle{
+    margin-top: 10px;
+    text-shadow: 1px 1px 1px #00A1B9;
+    box-shadow: 2px 2px  #ffffff;
+  }
   h1{
     color: #fff;
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 4px 4px 4px #000000;
   }
   body{
     background: #efefbb; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #efefbb, #d4d3dd); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #efefbb, #d4d3dd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #efefbb, #d4d3dd); 
+    height: 100vh;
   }

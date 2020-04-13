@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import PropTypes from 'prop-types';
 import firebase from '../conexion/firebase';
 import './menu.css';
 import List from './category';
-import Aditional from './aditional';
-import PropTypes from 'prop-types';
+import Aditional from './Aditional';
 
 const Menu = ({ agregar, total }) => {
   const [array, setArray] = useState([]);
@@ -24,6 +24,7 @@ const Menu = ({ agregar, total }) => {
         descripcion: element.data().item,
         precio: element.data().precio,
         id: element.id,
+        img: element.img,
       };
       return obj;
     });
@@ -55,7 +56,15 @@ const Menu = ({ agregar, total }) => {
       return 'Hubo un error';
     }
     return arrayAditio
-      .map((element) => <Aditional key={element.id} objeto={element} agregar={agregar} total={total} aditionalFunction={AdicionalFunction} />);
+      .map((element) => (
+        <Aditional
+          key={element.id}
+          objeto={element}
+          agregar={agregar}
+          total={total}
+          aditionalFunction={AdicionalFunction}
+        />
+      ));
   }
 
   return (
@@ -63,6 +72,7 @@ const Menu = ({ agregar, total }) => {
       <button
         type="button"
         className="Desayuno btn btn-info"
+        data-testid="desayuno"
         onClick={(event) => {
           event.preventDefault();
           ChangeCategory('desayuno');
@@ -115,7 +125,7 @@ const Menu = ({ agregar, total }) => {
       <div className="container">
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-secondary"
           data-toggle="modal"
           data-target="#myModal"
           disabled={array === 'hamburguesa'}
