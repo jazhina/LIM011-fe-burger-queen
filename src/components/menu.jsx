@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import firebase from '../conexion/firebase';
 import './menu.css';
 import List from './category';
-import Aditional from './aditional';
+import Aditional from './Aditional';
 
 const Menu = ({ agregar, total }) => {
   const [array, setArray] = useState([]);
@@ -55,7 +55,15 @@ const Menu = ({ agregar, total }) => {
       return 'Hubo un error';
     }
     return arrayAditio
-      .map((element) => <Aditional key={element.id} objeto={element} agregar={agregar} total={total} aditionalFunction={AdicionalFunction} />);
+      .map((element) => (
+        <Aditional
+          key={element.id}
+          objeto={element}
+          agregar={agregar}
+          total={total}
+          aditionalFunction={AdicionalFunction}
+        />
+      ));
   }
 
   return (
@@ -116,7 +124,7 @@ const Menu = ({ agregar, total }) => {
       <div className="container">
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-secondary"
           data-toggle="modal"
           data-target="#myModal"
           disabled={array === 'hamburguesa'}

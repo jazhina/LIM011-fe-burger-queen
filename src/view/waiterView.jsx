@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Title from '../components/title';
+import Title from '../components/Title';
 import Menu from '../components/menu';
 import Order from '../components/order';
 import '../components/title.css';
@@ -26,15 +26,11 @@ function WaiterView() {
   function Delete(data) {
     const newArrayDel = [...arrOrder];
     const position = arrOrder.findIndex((element) => element.id === data.id);
-    console.log(position);
+    // console.log(position);
     const arrayProducts = newArrayDel.splice(position, 1);
     console.log(arrayProducts);
     setArrOrder(newArrayDel);
   }
-  /*   const reset = () => {
-    setArrOrder([]);
-    setArrTotal(0);
-  }; */
   const agregarProductoAlPedido = (obj, operacion) => {
     const newobj = {
       producto: obj.descripcion,
@@ -76,7 +72,14 @@ function WaiterView() {
           <Menu agregar={agregarProductoAlPedido} total={buttonTotal} />
         </div>
         <div className="p-2 flex-fill bd-highlight">
-          <Order data={arrOrder} addOperation={agregarProductoAlPedido} total={buttonTotal} eliminar={Delete} newtotal={arrtotal} reset={orderReset} />
+          <Order
+            data={arrOrder}
+            addOperation={agregarProductoAlPedido}
+            total={buttonTotal}
+            eliminar={Delete}
+            newtotal={arrtotal}
+            reset={orderReset}
+          />
         </div>
       </div>
     </div>

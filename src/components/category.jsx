@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Order from './order';
-// import { useCollection } from 'react-firebase-hooks/firestore';
 
 function List({
   objeto, agregar, total,
@@ -18,7 +16,7 @@ function List({
           data-testid="mostrar"
           onClick={(event) => {
             event.preventDefault();
-            console.log(objeto);
+            // console.log(objeto);
             agregar(objeto, true);
             total(objeto);
           }}
